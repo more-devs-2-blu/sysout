@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
 import { EmissaoComponent } from './Components/emissao/emissao.component';
 import { ModelosNotasComponent } from './modelos-notas/modelos-notas.component';
+import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     LoginPageComponent,
     HomeComponent,
     EmissaoComponent,
-    ModelosNotasComponent
+    ModelosNotasComponent,
+    CancelNfseComponent
   ],
   imports: [
     BrowserModule,
