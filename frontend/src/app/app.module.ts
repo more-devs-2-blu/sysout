@@ -6,17 +6,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
+import { EmissaoComponent } from './Components/emissao/emissao.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'emissao', component: EmissaoComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    HomeComponent
+    HomeComponent,
+    EmissaoComponent
   ],
   imports: [
     BrowserModule,
