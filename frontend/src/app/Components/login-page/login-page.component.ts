@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
     localStorage.removeItem('token');
   }
 
-  async onLogin(): Promise<void> {
+  onLogin(): void {
     const userDocIdentification = document.querySelector('input[name="userDocIdentification"]') as HTMLInputElement;
     const password = document.querySelector('input[name="password"]') as HTMLInputElement;
     const user: Authenticate = {
@@ -29,12 +29,12 @@ export class LoginPageComponent implements OnInit {
       password: password.value
     };
 
-    const data = this.authenticateService.login(user).subscribe(
+    this.authenticateService.login(user).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
         setTimeout(() => { this.router.navigate(['/home']) }, 200)
     }, (error) => {
-      console.log('ERROOO BIXO BURRO!');
+      document.querySelector('.error')?.classList.add('active')
     });
 
   }

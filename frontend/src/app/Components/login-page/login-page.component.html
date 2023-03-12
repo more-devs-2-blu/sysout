@@ -7,6 +7,9 @@
       <input type="text" name="userDocIdentification" placeholder="CPF/CNPJ">
       <input type="password" name="password" placeholder="Senha">
       <button type="submit" (click)="onLogin()">Entrar</button>
+      <div class="error">
+        <p>CPF/CNPJ ou Senha estão incorretos.</p>
+      </div>
     </form>
     <span>Esqueceu a senha?</span>
     <hr>

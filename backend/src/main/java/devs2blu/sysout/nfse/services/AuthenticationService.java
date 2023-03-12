@@ -53,7 +53,6 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         Optional<UserModel> userTest = repository.findByUserDocIdentification(request.getUserDocIdentification());
-        if (userTest.isEmpty()) { System.out.println("hey nigga"); }
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUserDocIdentification(),
