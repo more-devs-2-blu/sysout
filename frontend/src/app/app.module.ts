@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
 import { EmissaoComponent } from './Components/emissao/emissao.component';
+import { ModelosNotasComponent } from './modelos-notas/modelos-notas.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'emissao', component: EmissaoComponent}
+  { path: 'emissao', component: EmissaoComponent},
+  { path: 'modelos', component: ModelosNotasComponent}
 ]
 
 @NgModule({
@@ -19,7 +21,8 @@ const routes: Routes = [
     AppComponent,
     LoginPageComponent,
     HomeComponent,
-    EmissaoComponent
+    EmissaoComponent,
+    ModelosNotasComponent
   ],
   imports: [
     BrowserModule,
