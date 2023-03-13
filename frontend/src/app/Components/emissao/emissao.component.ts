@@ -11,11 +11,10 @@ export class EmissaoComponent {
 
   constructor(
     private authenticateService: AuthenticateService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
-    document.body.style.backgroundColor = '';
     if (!this.authenticateService.isUserLogged()) this.router.navigate([''])
   }
 }

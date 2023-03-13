@@ -7,12 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
 import { EmissaoComponent } from './Components/emissao/emissao.component';
-import { ModelosNotasComponent } from './modelos-notas/modelos-notas.component';
+import { ModelosNotasComponent } from './Components/modelos-notas/modelos-notas.component';
 import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: 'emissao', component: EmissaoComponent},
   { path: 'modelos', component: ModelosNotasComponent}
 ]
@@ -24,7 +24,7 @@ const routes: Routes = [
     HomeComponent,
     EmissaoComponent,
     ModelosNotasComponent,
-    CancelNfseComponent
+    CancelNfseComponent,
   ],
   imports: [
     BrowserModule,
