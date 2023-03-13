@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthenticationRequest {
+	private String userDocIdentification;
 
-    private String userDocIdentification;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
-
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private String password;
 }

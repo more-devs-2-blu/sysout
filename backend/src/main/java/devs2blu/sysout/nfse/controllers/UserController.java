@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class UserController {
 
-    @Autowired
-    private AuthenticationService authService;
+	@Autowired
+	private AuthenticationService authenticationService;
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @GetMapping("/")
-    public ResponseEntity<UserDto> getUserInfo(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader) {
-        UserDto user = userService.getUserInfo(authorizationHeader);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
-    }
+	@GetMapping("/")
+	public ResponseEntity<UserDto> getUserInfo(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader) {
+		UserDto user = userService.getUserInfo(authorizationHeader);
+		return ResponseEntity.status(HttpStatus.OK).body(user);
+	}
 
 }

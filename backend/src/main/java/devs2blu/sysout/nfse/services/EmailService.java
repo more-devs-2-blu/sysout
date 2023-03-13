@@ -14,28 +14,27 @@ import java.time.LocalDateTime;
 @Service
 public class EmailService {
 
-    @Autowired
-    EmailRepository emailRepository;
+	@Autowired
+	EmailRepository emailRepository;
 
-    @Autowired
-    private JavaMailSender emailSender;
+	@Autowired
+	private JavaMailSender emailSender;
 
-    public void sendEmail(EmailModel emailModel) {
-        emailModel.setSendDateEmail(LocalDateTime.now());
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(emailModel.getEmailFrom());
-            message.setTo(emailModel.getEmailTo());
-            message.setSubject(emailModel.getSubject());
-            message.setText(emailModel.getText());
-            emailSender.send(message);
+	public void sendEmail(EmailModel emailModel) {
+		emailModel.setSendDateEmail(LocalDateTime.now());
+		try {
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setFrom(emailModel.getEmailFrom());
+			message.setTo(emailModel.getEmailTo());
+			message.setSubject(emailModel.getSubject());
+			message.setText(emailModel.getText());
+			emailSender.send(message);
 
-            emailModel.setEmailStatus(emailStatus.SENT);
-        } catch (MailException e) {
-            emailModel.setEmailStatus(emailStatus.ERROR);
-        } finally {
-            emailRepository.save(emailModel);
-        }
-    }
-
+			emailModel.setEmailStatus(emailStatus.SENT);
+		} catch (MailException e) {
+			emailModel.setEmailStatus(emailStatus.ERROR);
+		} finally {
+			emailRepository.save(emailModel);
+		}
+	}
 }
