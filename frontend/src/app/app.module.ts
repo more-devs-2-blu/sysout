@@ -9,6 +9,8 @@ import { HomeComponent } from './Components/home/home.component';
 import { IssueComponent } from './Components/issue/issue.component';
 import { ModelsNfseComponent } from './Components/models-nfse/models-nfse.component';
 import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
 import { ErrorPageComponent } from './Components/error-page/error-page.component';
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
     ModelsNfseComponent,
     CancelNfseComponent,
     ErrorPageComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
