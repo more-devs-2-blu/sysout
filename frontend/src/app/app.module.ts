@@ -9,12 +9,14 @@ import { HomeComponent } from './Components/home/home.component';
 import { IssueComponent } from './Components/issue/issue.component';
 import { ModelsNfseComponent } from './Components/models-nfse/models-nfse.component';
 import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
+import { ErrorPageComponent } from './Components/error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'issue', component: IssueComponent},
-  { path: 'models', component: ModelsNfseComponent}
+  { path: 'models', component: ModelsNfseComponent},
+  { path: 'error', component: ErrorPageComponent}
 ]
 
 @NgModule({
@@ -25,6 +27,7 @@ const routes: Routes = [
     IssueComponent,
     ModelsNfseComponent,
     CancelNfseComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
