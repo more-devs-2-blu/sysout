@@ -9,6 +9,8 @@ import { HomeComponent } from './Components/home/home.component';
 import { IssueComponent } from './Components/issue/issue.component';
 import { ModelsNfseComponent } from './Components/models-nfse/models-nfse.component';
 import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +27,8 @@ const routes: Routes = [
     IssueComponent,
     ModelsNfseComponent,
     CancelNfseComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
