@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 
 @Component({
-  selector: 'app-modelos-notas',
-  templateUrl: './modelos-notas.component.html',
-  styleUrls: ['./modelos-notas.component.css']
+  selector: 'app-models-nfse',
+  templateUrl: './models-nfse.component.html',
+  styleUrls: ['./models-nfse.component.css']
 })
-export class ModelosNotasComponent {
+export class ModelsNfseComponent {
 
   constructor(
     private authenticateService: AuthenticateService,

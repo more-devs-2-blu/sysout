@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelosNotasComponent } from './modelos-notas.component';
+import { ModelsNfseComponent } from './models-nfse.component';
 
-describe('ModelosNotasComponent', () => {
-  let component: ModelosNotasComponent;
-  let fixture: ComponentFixture<ModelosNotasComponent>;
+describe('ModelsNfseComponent', () => {
+  let component: ModelsNfseComponent;
+  let fixture: ComponentFixture<ModelsNfseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModelosNotasComponent ]
+      declarations: [ ModelsNfseComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModelosNotasComponent);
+    fixture = TestBed.createComponent(ModelsNfseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

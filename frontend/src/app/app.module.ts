@@ -7,14 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
 import { IssueComponent } from './Components/issue/issue.component';
-import { ModelosNotasComponent } from './Components/modelos-notas/modelos-notas.component';
+import { ModelsNfseComponent } from './Components/models-nfse/models-nfse.component';
 import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'issue', component: IssueComponent},
-  { path: 'modelos', component: ModelosNotasComponent}
+  { path: 'models', component: ModelsNfseComponent}
 ]
 
 @NgModule({
@@ -23,7 +23,7 @@ const routes: Routes = [
     LoginPageComponent,
     HomeComponent,
     IssueComponent,
-    ModelosNotasComponent,
+    ModelsNfseComponent,
     CancelNfseComponent,
   ],
   imports: [
