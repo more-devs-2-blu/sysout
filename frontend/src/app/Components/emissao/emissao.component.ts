@@ -15,6 +15,6 @@ export class EmissaoComponent {
   ) {}
 
   ngOnInit() {
-    if (!this.authenticateService.isUserLogged()) this.router.navigate([''])
+    if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
   }
 }
