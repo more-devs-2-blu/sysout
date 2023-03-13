@@ -4,14 +4,14 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './Components/login-page/login-page.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
-import { EmissaoComponent } from './Components/emissao/emissao.component';
+import { IssueComponent } from './Components/issue/issue.component'
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'emissao', component: EmissaoComponent}
+  { path: 'emissao', component: IssueComponent}
 ]
 
 @NgModule({
@@ -19,13 +19,14 @@ const routes: Routes = [
     AppComponent,
     LoginPageComponent,
     HomeComponent,
-    EmissaoComponent
+    IssueComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [],
