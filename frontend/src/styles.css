@@ -5,6 +5,7 @@
   --color-light-purple: #48266E;
   --color-light-blue: #31BEED;
   --color-light-green: #55D449;
+  --color-background: #fff
 }
 
 * {
@@ -17,4 +18,12 @@
   list-style: none;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+}
+
+.bg-purple {
+  --color-background: var(--color-light-purple);
+}
+
+body {
+  background-color: var(--color-background);
 }
