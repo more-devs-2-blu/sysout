@@ -1,8 +1,12 @@
 package devs2blu.sysout.nfse.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import devs2blu.sysout.nfse.models.UserModel;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.util.Optional;
 
 
 @Data
@@ -16,6 +20,7 @@ public class UserDto {
     private String email;
     @NotBlank
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @NotBlank
     @JsonInclude(JsonInclude.Include.NON_NULL)

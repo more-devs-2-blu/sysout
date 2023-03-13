@@ -6,12 +6,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
-import { IssueComponent } from './Components/issue/issue.component'
+import { IssueComponent } from './Components/issue/issue.component';
+import { ModelosNotasComponent } from './Components/modelos-notas/modelos-notas.component';
+import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'emissao', component: IssueComponent}
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'issue', component: IssueComponent},
+  { path: 'modelos', component: ModelosNotasComponent}
 ]
 
 @NgModule({
@@ -19,7 +22,9 @@ const routes: Routes = [
     AppComponent,
     LoginPageComponent,
     HomeComponent,
-    IssueComponent
+    IssueComponent,
+    ModelosNotasComponent,
+    CancelNfseComponent,
   ],
   imports: [
     BrowserModule,
