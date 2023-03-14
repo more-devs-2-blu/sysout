@@ -1,7 +1,7 @@
 package devs2blu.sysout.nfse.dtos;
 
-import ch.qos.logback.core.status.Status;
 import devs2blu.sysout.nfse.enums.BorrowerType;
+import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
