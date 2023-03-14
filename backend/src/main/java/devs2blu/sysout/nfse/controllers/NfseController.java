@@ -64,13 +64,13 @@ public class NfseController {
 	}
 
 	@DeleteMapping("{id}")
-    public ResponseEntity<Object> deleteNfse(@PathVariable("id") UUID id){
-        Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
+	public ResponseEntity<Object> deleteNfse(@PathVariable("id") UUID id) {
+		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
-        if(!nfseModelOptional.isPresent()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!")
-        }
-        nfseService.deleteNfse(id);
-        return ResponseEntity.status(HttpStatus.OK).body("NFSE deleted successfully!");
-    }
+		if (!nfseModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
+		}
+		nfseService.deleteNfse(id);
+		return ResponseEntity.status(HttpStatus.OK).body("NFSE deleted successfully!");
+	}
 }
