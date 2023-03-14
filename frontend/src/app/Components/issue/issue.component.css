@@ -18,6 +18,19 @@ html{
     color: red;
 }
 
+.invalid-field{
+    border: 1px solid red;
+}
+
+.error{
+    color: red;
+}
+
+.disable{
+    background-color: #F1F2F8;
+    border: 1px solid #5F6D7E;
+}
+
 .btn{
     color: #31BEED;
     border: 2px solid #31BEED;
