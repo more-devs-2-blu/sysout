@@ -26,44 +26,44 @@ import jakarta.validation.Valid;
 @RequestMapping("/nfse")
 public class NfseController {
 
-    private NfseService nfseService;
+	private NfseService nfseService;
 
-    @Autowired
-    public NfseController(NfseDto nfseDto, NfseService nfseService){
-        this.nfseService = nfseService;
-    }
-    
-    @GetMapping
-    public ResponseEntity<List<NfseModel>> getAllNfse(){
-        List<NfseModel> nfseModels = nfseService.findAllNfse();
-        return new ResponseEntity<>(nfseModels, HttpStatus.OK);
-    }
+	@Autowired
+	public NfseController(NfseDto nfseDto, NfseService nfseService) {
+		this.nfseService = nfseService;
+	}
 
-    @PostMapping("/add")
-    public ResponseEntity<NfseModel> addNfse(@Valid @RequestBody NfseDto nfseDto){
-        var nfseModel = new NfseModel();
-        BeanUtils.copyProperties(nfseDto, nfseModel);
+	@GetMapping
+	public ResponseEntity<List<NfseModel>> getAllNfse() {
+		List<NfseModel> nfseModels = nfseService.findAllNfse();
+		return new ResponseEntity<>(nfseModels, HttpStatus.OK);
+	}
 
-        return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
-    }
+	@PostMapping("/add")
+	public ResponseEntity<NfseModel> addNfse(@Valid @RequestBody NfseDto nfseDto) {
+		var nfseModel = new NfseModel();
+		BeanUtils.copyProperties(nfseDto, nfseModel);
 
-    @PutMapping("{id}")
-    public ResponseEntity<Object> updateNfse(@PathVariable("id") UUID id, @Valid @RequestBody NfseDto nfseDto){
-        Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
+		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
+	}
 
-        if(!nfseModelOptional.isPresent()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
-        }
+	@PutMapping("{id}")
+	public ResponseEntity<Object> updateNfse(@PathVariable("id") UUID id, @Valid @RequestBody NfseDto nfseDto) {
+		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
-        var nfseModel = new NfseModel();
-        BeanUtils.copyProperties(nfseDto, nfseModel);
-        nfseModel.setId(nfseModelOptional.get().getId());
+		if (!nfseModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
+		}
 
-        return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
+		var nfseModel = new NfseModel();
+		BeanUtils.copyProperties(nfseDto, nfseModel);
+		nfseModel.setId(nfseModelOptional.get().getId());
 
-    }
+		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
 
-    @DeleteMapping("{id}")
+	}
+
+	@DeleteMapping("{id}")
     public ResponseEntity<Object> deleteNfse(@PathVariable("id") UUID id){
         Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
