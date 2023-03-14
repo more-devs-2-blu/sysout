@@ -2,7 +2,9 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/Interfaces/user';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-issue',
@@ -10,6 +12,12 @@ import { AuthenticateService } from 'src/app/Services/authenticate.service';
   styleUrls: ['./issue.component.css']
 })
 export class IssueComponent implements OnInit {
+  constructor(
+    private authenticateService: AuthenticateService,
+    private router: Router,
+    private userService: UserService
+  ) { }
+  
   step: any = 1;
   todayDate = new Date().toLocaleDateString();
   servType: any;
@@ -17,8 +25,17 @@ export class IssueComponent implements OnInit {
   totalValue: number = 0.00;
   discount: number = 0.00;
   public showErrorMessage = false;
-
-
+  user: User | null = null;
+  
+  ngOnInit() {
+    document.body.style.backgroundColor = '';
+    if (!this.authenticateService.isUserLogged()) this.router.navigate(['']);
+    
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+    });   
+  
+  }
   //formatação do json do form
   noteData = new FormGroup({
     prestador: new FormGroup({
@@ -27,8 +44,8 @@ export class IssueComponent implements OnInit {
       cadastroEco: new FormControl(''),
       serie: new FormControl(''),
       tipo: new FormControl(''),
-      dataEmissao: new FormControl(''),
-      dataFato: new FormControl(''),
+      dataEmissao: new FormControl(this.todayDate),
+      dataFato: new FormControl(this.todayDate),
     }),
     servico: new FormGroup({
       enquadramento: new FormControl('', Validators.required),
@@ -75,24 +92,19 @@ export class IssueComponent implements OnInit {
       valorLiq: new FormControl('0,00'),
     })
   })
-
+  
   //função para enviar o json para o backend
   submit(){
     if(this.noteData.valid){
-      //enviar
+      console.log(this.noteData);
     }else{
       this.showErrorMessage = true;
       console.log("Preencha todos os campos");
     }
   }
-
-  openModels(){
-
-  }
-
   //função para troca de etapa do form
   next() {
-      this.step = this.step + 1;
+    this.step = this.step + 1;
   }
   previous() {
     if(this.step == 3){
@@ -102,7 +114,7 @@ export class IssueComponent implements OnInit {
       this.step = this.step - 1;
     }
   }
-
+  
   //Autocomplete baseado no local de prestação de serviço
   localCode(){
     if(this.localCod == null){
@@ -114,7 +126,7 @@ export class IssueComponent implements OnInit {
       return 8357;
     }
   }
-
+  
   //Autocomplete do campo situação tributaria
   tribSituation(){
     if(this.servType != 702){
@@ -123,7 +135,7 @@ export class IssueComponent implements OnInit {
       return "";
     }
   }
-
+  //Autocomplete aliquota
   aliqValue(){
     if(this.servType == 702){
       return '5,00';
@@ -134,7 +146,7 @@ export class IssueComponent implements OnInit {
       return '2,00'
     }
   }
-
+  //Autocomplete valor liquido
   liqValue(){
     return this.totalValue - this.discount;
   }
@@ -142,14 +154,5 @@ export class IssueComponent implements OnInit {
   issqnValue(){
     return 0.03 * this.totalValue;
   }
-
-  constructor(
-    private authenticateService: AuthenticateService,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-    document.body.style.backgroundColor = '';
-    if (!this.authenticateService.isUserLogged()) this.router.navigate([''])
-  }
+  
 }
