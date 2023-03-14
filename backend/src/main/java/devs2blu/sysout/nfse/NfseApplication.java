@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import devs2blu.sysout.nfse.consumers.ApiConsumer;
 
-
 @SpringBootApplication
 public class NfseApplication implements CommandLineRunner {
 	@Autowired

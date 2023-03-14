@@ -12,17 +12,27 @@ import devs2blu.sysout.nfse.repositories.NfseRepository;
 
 @Service
 public class NfseService {
-    
-    @Autowired
-    private NfseRepository nfseRepository;
 
-    public NfseModel saveNfse(NfseModel nfseModel){ return nfseRepository.save(nfseModel);}
+	@Autowired
+	private NfseRepository nfseRepository;
 
-    public List<NfseModel> findAllNfse(){ return nfseRepository.findAll();}
+	public NfseModel saveNfse(NfseModel nfseModel) {
+		return nfseRepository.save(nfseModel);
+	}
 
-    public Optional<NfseModel> findNfseById(UUID id){return nfseRepository.findById(id);}
+	public List<NfseModel> findAllNfse() {
+		return nfseRepository.findAll();
+	}
 
-    public NfseModel editNfse(NfseModel nfseModel){ return nfseRepository.save(nfseModel);}
+	public Optional<NfseModel> findNfseById(UUID id) {
+		return nfseRepository.findById(id);
+	}
 
-    public void deleteNfse(UUID id){nfseRepository.deleteById(id);}
+	public NfseModel editNfse(NfseModel nfseModel) {
+		return nfseRepository.save(nfseModel);
+	}
+
+	public void deleteNfse(UUID id) {
+		nfseRepository.deleteById(id);
+	}
 }
