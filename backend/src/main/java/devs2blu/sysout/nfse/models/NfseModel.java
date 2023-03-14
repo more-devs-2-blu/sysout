@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
-
-import ch.qos.logback.core.status.Status;
 import devs2blu.sysout.nfse.enums.BorrowerType;
+import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -162,5 +159,5 @@ public class NfseModel implements Serializable{
 
     // Invoice status
     @Enumerated(EnumType.STRING)
-    private Status invoiceStatus;
+    private InvoiceStatus invoiceStatus;
 }
