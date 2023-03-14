@@ -86,6 +86,10 @@ export class IssueComponent implements OnInit {
     }
   }
 
+  openModels(){
+
+  }
+
   //função para troca de etapa do form
   next() {
       this.step = this.step + 1;
@@ -128,7 +132,7 @@ export class IssueComponent implements OnInit {
       return '3,00';
     }else{
       return '2,00'
-    }    
+    }
   }
 
   liqValue(){

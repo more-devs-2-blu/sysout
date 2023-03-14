@@ -213,7 +213,7 @@
         <div class="card-header mt-2 pb-0 border-0">
           <h4 class="fw-bold">Dados Fiscais</h4>
         </div>
-        
+
         <div class="card-body">
           <div formGroupName="dadosFiscais">
             <div class="row">
@@ -379,6 +379,8 @@
         <div class="error" *ngIf="showErrorMessage">Preencha todos os campos obrigatórios.</div>
         <button class="btn btn-rounded" *ngIf="step != 1" (click)="previous()">Voltar</button>
         <button class="btn btn-rounded" *ngIf="step != 3" (click)="next()">Avançar</button>
+        <!-- Botão que abre o modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NFS-es SALVAS</button>
         <button class="btn btn-primary btn-rounded" id="submitForm" *ngIf="step == 3" (click)="submit()">Emitir</button>
       </div>
     </form>
