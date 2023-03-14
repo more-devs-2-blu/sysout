@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <!-- Cabeçalho -->
 <div class="container">
   <div class="row">
@@ -5,7 +7,7 @@
       <h2>Emitir Nota Fiscal Eletrônica</h2>
     </div>
     <div class="col-sm text-end py-4 border-0">
-      <button class="btn btn-rounded">Copiar Nota</button>
+      <button class="btn btn-rounded" data-bs-toggle="modal" data-bs-target="#models-nfse">Copiar Nota</button>
     </div>
   </div>
 </div>
@@ -379,10 +381,12 @@
         <div class="error" *ngIf="showErrorMessage">Preencha todos os campos obrigatórios.</div>
         <button class="btn btn-rounded" *ngIf="step != 1" (click)="previous()">Voltar</button>
         <button class="btn btn-rounded" *ngIf="step != 3" (click)="next()">Avançar</button>
-        <!-- Botão que abre o modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NFS-es SALVAS</button>
         <button class="btn btn-primary btn-rounded" id="submitForm" *ngIf="step == 3" (click)="submit()">Emitir</button>
       </div>
     </form>
   </div>
 </div>
+<app-footer></app-footer>
+
+<!-- Modal -->
+<app-models-nfse></app-models-nfse>
