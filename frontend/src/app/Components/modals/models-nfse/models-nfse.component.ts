@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-models-nfse',
+  templateUrl: './models-nfse.component.html',
+  styleUrls: ['./models-nfse.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ModelsNfseComponent {
 
   constructor(
     private authenticateService: AuthenticateService,
@@ -17,4 +17,5 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
   }
+
 }

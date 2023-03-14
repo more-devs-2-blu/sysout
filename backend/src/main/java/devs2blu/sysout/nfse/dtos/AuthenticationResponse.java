@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthenticationResponse {
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String token;
-
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private String token;
 }

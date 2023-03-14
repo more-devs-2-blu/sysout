@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap');
+
 :root {
   --color-dark-purple: #311A4C;
   --color-light-purple: #48266E;
   --color-light-blue: #31BEED;
   --color-light-green: #55D449;
+  --color-background: #fff
 }
 
 * {
@@ -14,5 +17,13 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-purple {
+  --color-background: var(--color-light-purple);
+}
+
+body {
+  background-color: var(--color-background);
 }

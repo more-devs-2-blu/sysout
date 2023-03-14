@@ -4,17 +4,21 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './Components/login-page/login-page.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Components/home/home.component';
-import { EmissaoComponent } from './Components/emissao/emissao.component';
-import { ModelosNotasComponent } from './modelos-notas/modelos-notas.component';
-import { CancelNfseComponent } from './Components/cancel-nfse/cancel-nfse.component';
+import { IssueComponent } from './Components/issue/issue.component';
+import { ModelsNfseComponent } from './Components/modals/models-nfse/models-nfse.component';
+import { CancelNfseComponent } from './Components/modals/cancel-nfse/cancel-nfse.component';
+import { NavbarComponent } from './Components/partials/navbar/navbar.component';
+import { FooterComponent } from './Components/partials/footer/footer.component';
+import { ErrorPageComponent } from './Components/error-page/error-page.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'emissao', component: EmissaoComponent},
-  { path: 'modelos', component: ModelosNotasComponent}
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'issue', component: IssueComponent},
+  { path: 'models', component: ModelsNfseComponent},
+  { path: '**', component: ErrorPageComponent}
 ]
 
 @NgModule({
@@ -22,15 +26,19 @@ const routes: Routes = [
     AppComponent,
     LoginPageComponent,
     HomeComponent,
-    EmissaoComponent,
-    ModelosNotasComponent,
-    CancelNfseComponent
+    IssueComponent,
+    ModelsNfseComponent,
+    CancelNfseComponent,
+    ErrorPageComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [],

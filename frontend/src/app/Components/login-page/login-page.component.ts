@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Authenticate } from 'src/app/Interfaces/authenticate';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { Router } from '@angular/router'
@@ -9,16 +9,20 @@ import { Router } from '@angular/router'
   styleUrls: ['./login-page.component.css'],
 
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private authenticateService: AuthenticateService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    document.body.style.backgroundColor = 'var(--color-light-purple)';
+    document.body.classList.add('bg-purple');
     localStorage.removeItem('token');
+  }
+
+  ngOnDestroy(): void {
+    document.body.classList.remove('bg-purple');
   }
 
   onLogin(): void {
@@ -32,7 +36,7 @@ export class LoginPageComponent implements OnInit {
     this.authenticateService.login(user).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
-        setTimeout(() => { this.router.navigate(['/home']) }, 200)
+        setTimeout(() => { this.router.navigate(['']) }, 200)
     }, (error) => {
       document.querySelector('.error')?.classList.add('active')
     });
