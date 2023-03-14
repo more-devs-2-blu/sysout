@@ -25,8 +25,8 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="exampleInput1" class="form-label mb-0">CNPJ</label>
-                  <input type="text" class="form-control" formControlName="cnpj" id="exampleInput1" />
+                  <label for="exampleInput1" class="form-label mb-0" >CNPJ</label>
+                  <input type="text" class="form-control" formControlName="cnpj" id="exampleInput1"/>
                 </div>
               </div>
               <div class="col-sm">
@@ -59,13 +59,13 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data de Emissão</label>
-                  <input [readOnly]="true" type="text" class="form-control date" formControlName="dataEmissao" id="exampleInput3" [(ngModel)]="todayDate" />
+                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataEmissao" id="exampleInput3" [(ngModel)]="todayDate" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data do Fato Gerado</label>
-                  <input [readOnly]="true" type="text" class="form-control date" formControlName="dataFato" id="exampleInput3" [(ngModel)]="todayDate"/>
+                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataFato" id="exampleInput3" [(ngModel)]="todayDate"/>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="mb-3">
                   <label for="exampleInput5" class="form-label mb-0 required">Enquadramento do Serviço</label>
                   <select id="exampleInput5" class="form-select mb-3" formControlName="enquadramento"
-                    aria-label="Default select example" [(ngModel)]="servType">
+                    aria-label="Default select example" [(ngModel)]="servType" [ngClass]="{'invalid-field': noteData.get('servico.enquadramento')?.invalid && noteData.get('servico.enquadramento')?.touched}">
                     <option value="" disabled selected>Selecione uma opção</option>
                     <option value="702">702 - Execução, por administração, empreitada ou subempreitada, de
                       obras de construção civil, hidráulica ou elétrica e de outras obras
@@ -95,7 +95,7 @@
                 <div class="mb-3">
                   <label for="exampleInput5" class="form-label mb-0 required">Local de Prestação</label>
                   <select id="exampleInput5" class="form-select mb-3" formControlName="localPrest"
-                    aria-label="Default select example" [(ngModel)]="localCod">
+                    aria-label="Default select example" [(ngModel)]="localCod" [ngClass]="{'invalid-field': noteData.get('servico.localPrest')?.invalid && noteData.get('servico.localPrest')?.touched}">
                     <option value="" disabled selected>Selecione uma opção</option>
                     <option value="Blumenau">Blumenau</option>
                     <option value="Timbo">Timbó</option>
@@ -105,20 +105,20 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0 required">Codigo do Local</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="codLocal" id="exampleInput3" [ngModel]="localCode()" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="codLocal" id="exampleInput3" placeholder="Escolha um local de prestação" [ngModel]="localCode()" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Local de Incidência</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="localInc" id="exampleInput3" [ngModel]="'Timbó'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="localInc" id="exampleInput3" />
                 </div>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="exampleInput6" class="form-label mb-0 required">Discriminação:</label>
-              <textarea class="form-control" formControlName="discrim" id="exampleInput6" rows="5" placeholder="Descreva detalhes sobre o serviço prestado..."></textarea>
+              <textarea class="form-control" formControlName="discrim" id="exampleInput6" rows="5" placeholder="Descreva detalhes sobre o serviço prestado..." [ngClass]="{'invalid-field': noteData.get('servico.discrim')?.invalid && noteData.get('servico.discrim')?.touched}"></textarea>
             </div>
 
           </div>
@@ -138,7 +138,7 @@
                 <div class="mb-3">
                   <label for="exampleInput5" class="form-label mb-0 required">Tipo do Tomador</label>
                   <select id="exampleInput5" class="form-select mb-3" formControlName="tipoTomador"
-                    aria-label="Default select example">
+                    aria-label="Default select example" [ngClass]="{'invalid-field': noteData.get('tomador.tipoTomador')?.invalid && noteData.get('tomador.tipoTomador')?.touched}">
                     <option value="" disabled selected>Selecione uma opção</option>
                     <option value="1">Pessoa Física</option>
                     <option value="2">Pessoa Jurídica</option>
@@ -149,19 +149,19 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0 required">Tomador</label>
-                  <input type="text" class="form-control" formControlName="tomador" id="exampleInput2" placeholder="Digite o nome ou razão social"/>
+                  <input type="text" class="form-control" formControlName="tomador" id="exampleInput2" placeholder="Digite o nome ou razão social" [ngClass]="{'invalid-field': noteData.get('tomador.tomador')?.invalid && noteData.get('tomador.tomador')?.touched}"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0 required">CPF/CNPJ</label>
-                  <input type="text" class="form-control" formControlName="cnpjToma" id="exampleInput3" placeholder="Digite o CPF/CNPJ" />
+                  <input type="text" class="form-control" formControlName="cnpjToma" id="exampleInput3" placeholder="Digite o CPF/CNPJ" [ngClass]="{'invalid-field': noteData.get('tomador.cnpjToma')?.invalid && noteData.get('tomador.cnpjToma')?.touched}"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Cadastro Econômico</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="cadastroEcoToma" id="exampleInput3" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="cadastroEcoToma" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -172,13 +172,13 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0 required">CEP</label>
-                  <input type="text" class="form-control" formControlName="cep" id="exampleInput1" placeholder="Digite o cep" />
+                  <input type="text" class="form-control" formControlName="cep" id="exampleInput1" placeholder="Digite o cep" [ngClass]="{'invalid-field': noteData.get('tomador.cep')?.invalid && noteData.get('tomador.cep')?.touched}"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0 required">Cidade</label>
-                  <input type="text" class="form-control" formControlName="cidade" id="exampleInput2" placeholder="Digite a cidade" />
+                  <input type="text" class="form-control" formControlName="cidade" id="exampleInput2" placeholder="Digite a cidade" [ngClass]="{'invalid-field': noteData.get('tomador.cidade')?.invalid && noteData.get('tomador.cidade')?.touched}" />
                 </div>
               </div>
               <div class="col-sm">
@@ -193,13 +193,13 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0 required">Bairro</label>
-                  <input type="text" class="form-control" formControlName="bairro" id="exampleInput1" placeholder="Digite o bairro"/>
+                  <input type="text" class="form-control" formControlName="bairro" id="exampleInput1" placeholder="Digite o bairro" [ngClass]="{'invalid-field': noteData.get('tomador.bairro')?.invalid && noteData.get('tomador.bairro')?.touched}"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0 required">Logradouro</label>
-                  <input type="text" class="form-control" formControlName="logra" id="exampleInput2" placeholder="Digite o logradouro" />
+                  <input type="text" class="form-control" formControlName="logra" id="exampleInput2" placeholder="Digite o logradouro" [ngClass]="{'invalid-field': noteData.get('tomador.logra')?.invalid && noteData.get('tomador.logra')?.touched}"/>
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@
         <div class="card-header mt-2 pb-0 border-0">
           <h4 class="fw-bold">Dados Fiscais</h4>
         </div>
-        
+
         <div class="card-body">
           <div formGroupName="dadosFiscais">
             <div class="row">
@@ -221,7 +221,7 @@
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0">Situação Tributaria</label>
                     <select id="exampleInput5" class="form-select mb-3" formControlName="sitTribu"
-                      aria-label="Default select example" [ngModel]="tribSituation()">
+                      aria-label="Default select example">
                       <option value="" disabled selected>Selecione uma opção</option>
                       <option value="00">TI - Tributada Integralmente</option>
                       <option value="20">TRBC - Tributada com Redução da Base de Cálculo</option>
@@ -233,19 +233,19 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0">Aliquota</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="aliquota" id="exampleInput2" [ngModel]="aliqValue()"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="aliquota" id="exampleInput2" [ngModel]="aliqValue()"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0 required ">Valor do Serviço</label>
-                  <input type="text" class="form-control" formControlName="valor" id="exampleInput3" placeholder="Digite o valor do serviço" [(ngModel)]="totalValue"/>
+                  <input type="text" class="form-control" formControlName="valor" id="exampleInput3" placeholder="Digite o valor do serviço" [(ngModel)]="totalValue" [ngClass]="{'invalid-field': noteData.get('dadosFiscais.valor')?.invalid && noteData.get('dadosFiscais.valor')?.touched}"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Desc. Incondicional</label>
-                  <input type="text" class="form-control" formControlName="descInco" id="exampleInput3" placeholder="Digite o desconto" [ngModel]="'0,00'"/>
+                  <input type="text" class="form-control" formControlName="descInco" id="exampleInput3" placeholder="Digite o desconto" />
                 </div>
               </div>
             </div>
@@ -254,25 +254,25 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0">Valor da Dedução</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="valorDed" id="exampleInput1" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="valorDed" id="exampleInput1" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0">Base de Cálculo</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="baseCalc" id="exampleInput2" [ngModel]="totalValue"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="baseCalc" id="exampleInput2" [ngModel]="totalValue"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">ISSQN</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="issqn" id="exampleInput3" [ngModel]="'0,03'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="issqn" id="exampleInput3" [ngModel]="issqnValue()"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">ISSRF</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="issrf" id="exampleInput3" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="issrf" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -286,19 +286,19 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0">IR</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="irFed" id="exampleInput1" [ngModel]="'0,00'" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="irFed" id="exampleInput1" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0">PIS</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="pis" id="exampleInput2" [ngModel]="'0,00'" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="pis" id="exampleInput2" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">COFINS</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="cofins" id="exampleInput3" [ngModel]="'0,00'" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="cofins" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -311,19 +311,19 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total dos Itens Informados">Valor Total</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="valorTotal" id="exampleInput1" [ngModel]="totalValue"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="valorTotal" id="exampleInput1" [ngModel]="totalValue"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valores Totais dos Descontos Incondicionais Informados nos Itens">Desc. Incondicional</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="descInc" id="exampleInput2" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="descInc" id="exampleInput2" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total das Deduções informadas nos itens">Dedução</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="deducao" id="exampleInput3" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="deducao" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -332,19 +332,19 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total - Dedução">Base de Calculo</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="baseCalc" id="exampleInput1" [ngModel]="'1,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="baseCalc" id="exampleInput1" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total de ISSQN dos Itens">Total ISSQN</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="totalIssqn" id="exampleInput2" [ngModel]="'0,03'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="totalIssqn" id="exampleInput2" [ngModel]="issqnValue()"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total de ISSRF dos itens">Total ISSRF</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="totalIssrf" id="exampleInput3" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="totalIssrf" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -353,7 +353,7 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Soma de todos os Tributos Federais">Tributos Federais</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="totalFed" id="exampleInput1" [ngModel]="'0,00'"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="totalFed" id="exampleInput1" />
                 </div>
               </div>
               <div class="col-sm">
@@ -365,7 +365,7 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0" data-toggle="tooltip" data-placement="right" title="Valor Total - Valor ISSRF - Tributos Federais - Descontos">Valor Líquido</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="valorLiq" id="exampleInput3" [ngModel]="liqValue()"/>
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="valorLiq" id="exampleInput3" [ngModel]="liqValue()"/>
                 </div>
               </div>
             </div>
@@ -376,11 +376,13 @@
 
       <!-- Card footer -->
       <div class="card-footer text-end py-4 px-5 border-0">
+        <div class="error" *ngIf="showErrorMessage">Preencha todos os campos obrigatórios.</div>
         <button class="btn btn-rounded" *ngIf="step != 1" (click)="previous()">Voltar</button>
         <button class="btn btn-rounded" *ngIf="step != 3" (click)="next()">Avançar</button>
+        <!-- Botão que abre o modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NFS-es SALVAS</button>
         <button class="btn btn-primary btn-rounded" id="submitForm" *ngIf="step == 3" (click)="submit()">Emitir</button>
       </div>
-      <pre>{{noteData.value | json}}</pre>
     </form>
   </div>
 </div>
