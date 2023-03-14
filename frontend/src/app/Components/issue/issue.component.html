@@ -1,4 +1,8 @@
 <app-navbar></app-navbar>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1b14373b51451f7df9ace8d8e8c4186c761af295
 <!-- Cabeçalho -->
 <div class="container">
   <div class="row">
@@ -6,7 +10,7 @@
       <h2>Emitir Nota Fiscal Eletrônica</h2>
     </div>
     <div class="col-sm text-end py-4 border-0">
-      <button class="btn btn-rounded">Copiar Nota</button>
+      <button class="btn btn-rounded" data-bs-toggle="modal" data-bs-target="#models-nfse">Copiar Nota</button>
     </div>
   </div>
 </div>
@@ -33,7 +37,7 @@
               <div class="col-sm">
                 <div class="mb-3" *ngIf="user">
                   <label for="exampleInput2" class="form-label mb-0">Razão Social</label>
-                  <input type="text" class="form-control disable" formControlName="razaoSocial" id="exampleInput2" [(ngModel)]="user.name" />                 
+                  <input type="text" class="form-control disable" formControlName="razaoSocial" id="exampleInput2" [(ngModel)]="user.name" />
                 </div>
               </div>
               <div class="col-sm">
@@ -386,3 +390,6 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+<!-- Modal -->
+<app-models-nfse></app-models-nfse>
