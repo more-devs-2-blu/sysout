@@ -21,17 +21,15 @@ import devs2blu.sysout.nfse.dtos.NfseDto;
 import devs2blu.sysout.nfse.models.NfseModel;
 import devs2blu.sysout.nfse.services.NfseService;
 import jakarta.validation.Valid;
+import lombok.Data;
 
+@Data
 @RestController
 @RequestMapping("/nfse")
 public class NfseController {
 
-	private NfseService nfseService;
-
 	@Autowired
-	public NfseController(NfseDto nfseDto, NfseService nfseService) {
-		this.nfseService = nfseService;
-	}
+	private NfseService nfseService;
 
 	@GetMapping
 	public ResponseEntity<List<NfseModel>> getAllNfse() {

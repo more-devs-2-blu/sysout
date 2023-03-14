@@ -21,143 +21,143 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "TB_NFSEs")
-public class NfseModel implements Serializable{
+public class NfseModel implements Serializable {
 
-    private static final Long serialVersionUID = 1L;
+	private static final Long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(unique = true, updatable = false)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	@Column(unique = true, updatable = false)
+	private UUID id;
 
-    // Provider information
+	// Provider information
 
-    @Column(unique = true)
-    private String providerEconomicRegistration;
+	@Column(unique = true)
+	private String providerEconomicRegistration;
 
-    @Column(unique = true)
-    private String providerCnpjOrCpf;
+	@Column(unique = true)
+	private String providerCnpjOrCpf;
 
-    // Invoice information
+	// Invoice information
 
-    @Column(nullable = false)
-    private int series;
+	@Column(nullable = false)
+	private int series;
 
-    @Column
-    private LocalDateTime dateOfIssue;
+	@Column
+	private LocalDateTime dateOfIssue;
 
-    @Column
-    private LocalDateTime TaxableEventDate;
+	@Column
+	private LocalDateTime TaxableEventDate;
 
-    // Borrower information
+	// Borrower information
 
-    @Column
-    @Enumerated(EnumType.STRING)
-    private BorrowerType borrowerType;
+	@Column
+	@Enumerated(EnumType.STRING)
+	private BorrowerType borrowerType;
 
-    @Column
-    private String borrower;
+	@Column
+	private String borrower;
 
-    @Column(unique = true)
-    private String borrowerCnpjOrCpf;
+	@Column(unique = true)
+	private String borrowerCnpjOrCpf;
 
-    @Column(unique = true)
-    private String borrowerEconomicRegistration;
+	@Column(unique = true)
+	private String borrowerEconomicRegistration;
 
-    @Column
-    private String borrowerCity;
+	@Column
+	private String borrowerCity;
 
-    @Column
-    private String borrowerCep;
+	@Column
+	private String borrowerCep;
 
-    @Column
-    private String borrowerCountry;
+	@Column
+	private String borrowerCountry;
 
-    @Column
-    private String borrowerStreet;
+	@Column
+	private String borrowerStreet;
 
-    @Column
-    private String borrowerDistrict;
-    
-    // Invoice Items
+	@Column
+	private String borrowerDistrict;
 
-    @Column
-    private String placeOfProvision;
+	// Invoice Items
 
-    @Column
-    private String serviceList;
+	@Column
+	private String placeOfProvision;
 
-    @Column
-    private String placeOfIncidence;    
+	@Column
+	private String serviceList;
 
-    @Column
-    private String taxSituation;
+	@Column
+	private String placeOfIncidence;
 
-    @Column
-    private double timboRate;
+	@Column
+	private String taxSituation;
 
-    @Column
-    private double serviceValue;
+	@Column
+	private double timboRate;
 
-    @Column
-    private double discountUnconditional;
+	@Column
+	private double serviceValue;
 
-    @Column
-    private double dedutionAmount;
+	@Column
+	private double discountUnconditional;
 
-    @Column
-    private double calculationBase;
+	@Column
+	private double dedutionAmount;
 
-    @Column
-    private double ISSQN;
+	@Column
+	private double calculationBase;
 
-    @Column
-    private double ISSRF;
+	@Column
+	private double ISSQN;
 
-    @Column
-    private String description;
+	@Column
+	private double ISSRF;
 
-    // Federal taxes
+	@Column
+	private String description;
 
-    @Column
-    private double incomeTax;
+	// Federal taxes
 
-    @Column
-    private double pis;
+	@Column
+	private double incomeTax;
 
-    @Column
-    private double cofins;
+	@Column
+	private double pis;
 
-    // Values
+	@Column
+	private double cofins;
 
-    @Column
-    private double amount;
+	// Values
 
-    @Column
-    private double unconditionalDiscount;
+	@Column
+	private double amount;
 
-    @Column
-    private double deduction;
+	@Column
+	private double unconditionalDiscount;
 
-    @Column
-    private double calculationBasis;
+	@Column
+	private double deduction;
 
-    @Column
-    private double totalIssqn;
+	@Column
+	private double calculationBasis;
 
-    @Column
-    private double totalIssrf;
+	@Column
+	private double totalIssqn;
 
-    @Column
-    private double totalFederalTaxes;
+	@Column
+	private double totalIssrf;
 
-    @Column
-    private double conditionalDescount;
+	@Column
+	private double totalFederalTaxes;
 
-    @Column
-    private double netValue;
+	@Column
+	private double conditionalDescount;
 
-    // Invoice status
-    @Enumerated(EnumType.STRING)
-    private InvoiceStatus invoiceStatus;
+	@Column
+	private double netValue;
+
+	// Invoice status
+	@Enumerated(EnumType.STRING)
+	private InvoiceStatus invoiceStatus;
 }

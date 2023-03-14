@@ -9,5 +9,5 @@ import devs2blu.sysout.nfse.models.NfseModel;
 
 @Repository
 public interface NfseRepository extends JpaRepository<NfseModel, UUID> {
-    
+
 }
