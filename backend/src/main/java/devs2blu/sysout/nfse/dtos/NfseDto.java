@@ -131,6 +131,6 @@ public class NfseDto {
 	// Invoice status
 
 	@NotNull
-	private Status invoiceStatus;
+	private InvoiceStatus invoiceStatus;
 
 }
