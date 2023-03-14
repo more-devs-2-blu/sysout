@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b14373b51451f7df9ace8d8e8c4186c761af295
 <!-- Cabeçalho -->
 <div class="container">
   <div class="row">
@@ -26,21 +29,21 @@
           <div formGroupName="prestador">
             <div class="row">
               <div class="col-sm">
-                <div class="mb-3">
+                <div class="mb-3" *ngIf="user">
                   <label for="exampleInput1" class="form-label mb-0" >CNPJ</label>
-                  <input type="text" class="form-control" formControlName="cnpj" id="exampleInput1"/>
+                  <input type="text" class="form-control disable" formControlName="cnpj" id="exampleInput1" [(ngModel)]="user.userDocIdentification"/>
                 </div>
               </div>
               <div class="col-sm">
-                <div class="mb-3">
+                <div class="mb-3" *ngIf="user">
                   <label for="exampleInput2" class="form-label mb-0">Razão Social</label>
-                  <input type="text" class="form-control" formControlName="razaoSocial" id="exampleInput2" />
+                  <input type="text" class="form-control disable" formControlName="razaoSocial" id="exampleInput2" [(ngModel)]="user.name" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Cadastro Econômico</label>
-                  <input [readOnly]="true" type="text" class="form-control" formControlName="cadastroEco" id="exampleInput3" />
+                  <input [readOnly]="true" type="text" class="form-control disable" formControlName="cadastroEco" id="exampleInput3" />
                 </div>
               </div>
             </div>
@@ -61,13 +64,13 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data de Emissão</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataEmissao" id="exampleInput3" [(ngModel)]="todayDate" />
+                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataEmissao" id="exampleInput3" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data do Fato Gerado</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataFato" id="exampleInput3" [(ngModel)]="todayDate"/>
+                  <input [readOnly]="true" type="text" class="form-control date disable" formControlName="dataFato" id="exampleInput3"/>
                 </div>
               </div>
             </div>
@@ -377,7 +380,7 @@
 
 
       <!-- Card footer -->
-      <div class="card-footer text-end py-4 px-5 border-0">
+      <div class="card-footer text-end px-5 border-0">
         <div class="error" *ngIf="showErrorMessage">Preencha todos os campos obrigatórios.</div>
         <button class="btn btn-rounded" *ngIf="step != 1" (click)="previous()">Voltar</button>
         <button class="btn btn-rounded" *ngIf="step != 3" (click)="next()">Avançar</button>
