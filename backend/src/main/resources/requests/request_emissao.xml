@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding='iso-8859-1'?>
 <nfse>
-	<nfse_teste></nfse_teste>
+	<nfse_teste>1</nfse_teste>
 	<nf>
 		<valor_total></valor_total>
 		<valor_desconto></valor_desconto>
@@ -39,20 +38,19 @@
 	</tomador>
 	<itens>
 		<lista>
-		<codigo_local_prestacao_servico></codigo_local_prestacao_servico>
-		<codigo_item_lista_servico></codigo_item_lista_servico>
-		<descritivo></descritivo>
-		<aliquota_item_lista_servico></aliquota_item_lista_servico>
-		<situacao_tributaria></situacao_tributaria>
-		<valor_tributavel></valor_tributavel>
-		<valor_deducao></valor_deducao>
-		<valor_issrf></valor_issrf>
-		<tributa_municipio_prestador></tributa_municipio_prestador>
-		<unidade_codigo/>
-		<unidade_quantidade/>
-		<unidade_valor_unitario/>                    
+			<codigo_local_prestacao_servico></codigo_local_prestacao_servico>
+			<codigo_item_lista_servico></codigo_item_lista_servico>
+			<descritivo></descritivo>
+			<aliquota_item_lista_servico></aliquota_item_lista_servico>
+			<situacao_tributaria></situacao_tributaria>
+			<valor_tributavel></valor_tributavel>
+			<valor_deducao></valor_deducao>
+			<valor_issrf></valor_issrf>
+			<tributa_municipio_prestador></tributa_municipio_prestador>
+			<unidade_codigo></unidade_codigo>
+			<unidade_quantidade></unidade_quantidade>
+			<unidade_valor_unitario></unidade_valor_unitario>
 		</lista>
 	</itens>
-	<produtos>
-	</produtos>
+	<produtos></produtos>
 </nfse>
