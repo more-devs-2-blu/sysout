@@ -112,7 +112,7 @@ public class NfseDto {
 	private double totalFederalTaxes;
 
 	@NotNull
-	private double conditionalDescount;
+	private double conditionalDiscount;
 
 	@NotNull
 	private double netValue;

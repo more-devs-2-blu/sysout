@@ -12,18 +12,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class NfseException {
-    
-    @ResponseStatus(HttpStatus.CONFLICT)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ErrorHandler> handle(MethodArgumentNotValidException ex){
+	@ResponseStatus(HttpStatus.CONFLICT)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public List<ErrorHandler> handle(MethodArgumentNotValidException ex) {
+		List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
+		List<ErrorHandler> errorHandlers = new ArrayList<>();
 
-        List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
+		fieldErrors.forEach(error -> errorHandlers
+				.add(new ErrorHandler(error.getField(), error.getDefaultMessage())));
 
-        List<ErrorHandler> errorHandlers = new ArrayList<>();
-
-        fieldErrors.forEach(error -> errorHandlers.add(new ErrorHandler(error.getField(), error.getDefaultMessage())));
-
-        return errorHandlers;
-    }
-
+		return errorHandlers;
+	}
 }
