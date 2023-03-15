@@ -4,7 +4,51 @@
     border-color: #31BEED;
 }
 
+.more {
+  color: #31BEED;
+}
+
+#emit-btn {
+  padding: .8rem 3rem .8rem 3rem;
+  font-weight: 500;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #31BEED;
+}
+
 .card {
   background-color: #F1F2F8;
   border: none;
+}
+
+table {
+  background-color: #F1F2F8;
+}
+
+table th, td {
+  font-size: 14px;
+  text-align: center;
+}
+
+table span {
+  font-weight: 500;
+}
+
+table .status {
+  font-weight: 700;
+}
+
+table .emited {
+  color: green;
+}
+
+table .canceled {
+  color: black;
+}
+
+table .rejected {
+  color: red;
 }

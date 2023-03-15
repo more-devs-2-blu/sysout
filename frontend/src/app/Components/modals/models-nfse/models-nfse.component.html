@@ -10,57 +10,7 @@
         <div class="card-header mt-2 pb-0 border-0">
           <h4 class="fw-bold">Pesquisar NFS-e</h4>
         </div>
-        <div class="filter">
-          <div class="row">
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput1" class="form-label mb-0 required">De</label>
-                <input type="text" class="form-control" id="exampleInput1"/>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput2" class="form-label mb-0 required">Até</label>
-                <input type="text" class="form-control" id="exampleInput2" />
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput3" class="form-label mb-0 required">Serviço</label>
-                <input [readOnly]="true" type="text" class="form-control" id="exampleInput3" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput1" class="form-label mb-0 required">Cliente</label>
-                <input type="text" class="form-control" id="exampleInput1"/>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput2" class="form-label mb-0 required">Valor até</label>
-                <input type="text" class="form-control" id="exampleInput2" />
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="mb-3">
-                <label for="exampleInput3" class="form-label mb-0 required">Situação</label>
-                <input [readOnly]="true" type="text" class="form-control" id="exampleInput3" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <div class="mb-3">
-                <div class="col-sm text-end border-2">
-                  <button class="btn btn-rounded">Pesquisar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-filter></app-filter>
       </div>
       <div class="modal-body">
         <div class="card-header mb-3 pb-0 border-0">
