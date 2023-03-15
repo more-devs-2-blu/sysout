@@ -36,6 +36,5 @@ public class ApiConsumer {
 				.retrieve()
 				.bodyToMono(String.class)
 				.block();
-		;
 	}
 }
