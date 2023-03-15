@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<nfse> <!--  Dados da NFS-e -->
+<nfse>
 	<nfse_teste></nfse_teste>
 	<nf>
 		<valor_total></valor_total>

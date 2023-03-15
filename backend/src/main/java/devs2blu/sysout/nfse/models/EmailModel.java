@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "TB_EMAIL")
+@Table(name = "emails")
 public class EmailModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

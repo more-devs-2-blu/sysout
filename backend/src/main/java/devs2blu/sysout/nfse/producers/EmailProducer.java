@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailProducer {
-
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 
@@ -18,5 +17,4 @@ public class EmailProducer {
 		BeanUtils.copyProperties(emailDto, emailModel);
 		rabbitTemplate.convertAndSend("email_queue", emailModel);
 	}
-
 }

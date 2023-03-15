@@ -4,24 +4,21 @@ import devs2blu.sysout.nfse.enums.BorrowerType;
 import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
 @Data
 public class NfseDto {
-
 	// Provider information
-
-
 	private String providerEconomicRegistration;
 
 	@NotBlank
 	private String providerCnpjOrCpf;
 
 	// Invoice information
-
 	@NotNull
 	private int series;
 
 	// Borrower information
-
 	@NotNull
 	private BorrowerType borrowerType;
 
@@ -49,7 +46,6 @@ public class NfseDto {
 	private String borrowerDistrict;
 
 	// Invoice Items
-
 	@NotBlank
 	private String placeOfProvision;
 
@@ -87,7 +83,6 @@ public class NfseDto {
 	private String description;
 
 	// Federal taxes
-
 	@NotNull
 	private double incomeTax;
 
@@ -98,7 +93,6 @@ public class NfseDto {
 	private double cofins;
 
 	// Values
-
 	@NotNull
 	private double amount;
 
@@ -124,8 +118,5 @@ public class NfseDto {
 	private double netValue;
 
 	// Invoice status
-
-
 	private InvoiceStatus invoiceStatus;
-
 }
