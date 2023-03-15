@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import devs2blu.sysout.nfse.enums.BorrowerType;
 import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.persistence.Column;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "TB_NFSEs")
-public class NfseModel implements Serializable {
+public class 	NfseModel implements Serializable {
 
 	private static final Long serialVersionUID = 1L;
 
@@ -32,10 +33,10 @@ public class NfseModel implements Serializable {
 
 	// Provider information
 
-	@Column(unique = true)
+	@Column
 	private String providerEconomicRegistration;
 
-	@Column(unique = true)
+	@Column
 	private String providerCnpjOrCpf;
 
 	// Invoice information
@@ -44,9 +45,14 @@ public class NfseModel implements Serializable {
 	private int series;
 
 	@Column
+	private char type;
+
+	@Column
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime dateOfIssue;
 
 	@Column
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime TaxableEventDate;
 
 	// Borrower information
@@ -58,10 +64,10 @@ public class NfseModel implements Serializable {
 	@Column
 	private String borrower;
 
-	@Column(unique = true)
+	@Column()
 	private String borrowerCnpjOrCpf;
 
-	@Column(unique = true)
+	@Column()
 	private String borrowerEconomicRegistration;
 
 	@Column
