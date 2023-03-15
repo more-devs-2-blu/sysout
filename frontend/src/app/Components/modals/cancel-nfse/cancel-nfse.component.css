@@ -1,0 +1,20 @@
+.btn-blue{
+  color: #31BEED;
+  border: 2px solid #31BEED;
+  margin-left: 5px;
+}
+
+.btn-red{
+  color: white;
+  background-color: red;
+  border: 2px solid red;
+  margin-left: 5px;
+}
+
+.data-text{
+  font-size: 14px;
+}
+
+hr {
+  border: 0.25px solid rgb(161, 161, 161);
+}

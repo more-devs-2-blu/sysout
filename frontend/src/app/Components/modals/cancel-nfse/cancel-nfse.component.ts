@@ -1,16 +1,51 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cancel-nfse',
   templateUrl: './cancel-nfse.component.html',
   styleUrls: ['./cancel-nfse.component.css']
 })
-export class CancelNfseComponent implements OnInit{
+export class CancelNfseComponent {
+
+  cancelForm!: FormGroup
+
+  // função interagir com o modal
+  public onOpenModal(): void{
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#cancelModal');
+
+    container?.appendChild(button);
+    button.click();
+    }
+
+  get description(){
+    return this.cancelForm.get('description')!;
+  }
+
+  ngOnInit() {
+    this.cancelForm = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+    })
+    if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
+  }
+
+  submit(){
+    if(this.cancelForm.invalid){
+      return
+    }
+    console.log('Enviou formulário')
+  }
 
   constructor(
-    ) {}
-
-  ngOnInit(): void {
-  }
+    private authenticateService: AuthenticateService,
+    private router: Router
+  ) {}
 
 }

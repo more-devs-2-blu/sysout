@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'issue', component: IssueComponent},
   { path: 'models', component: ModelsNfseComponent},
+  { path: 'cancelar', component: CancelNfseComponent},
   { path: '**', component: ErrorPageComponent}
 ]
 
@@ -28,10 +29,10 @@ const routes: Routes = [
     HomeComponent,
     IssueComponent,
     ModelsNfseComponent,
-    CancelNfseComponent,
     ErrorPageComponent,
     NavbarComponent,
     FooterComponent,
+    CancelNfseComponent
   ],
   imports: [
     BrowserModule,
