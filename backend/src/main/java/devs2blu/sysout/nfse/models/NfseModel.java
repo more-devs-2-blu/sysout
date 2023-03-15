@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import devs2blu.sysout.nfse.enums.BorrowerType;
 import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.persistence.Column;
@@ -14,6 +15,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,18 +24,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "TB_NFSEs")
+@Table(name = "nfses")
 public class NfseModel implements Serializable {
-
-	private static final Long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(unique = true, updatable = false)
 	private UUID id;
 
-	// Provider information
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private UserModel user;
 
+	// Provider information
 	@Column
 	private String providerEconomicRegistration;
 
@@ -40,7 +43,6 @@ public class NfseModel implements Serializable {
 	private String providerCnpjOrCpf;
 
 	// Invoice information
-
 	@Column(nullable = false)
 	private int series;
 
@@ -56,7 +58,6 @@ public class NfseModel implements Serializable {
 	private LocalDateTime TaxableEventDate;
 
 	// Borrower information
-
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BorrowerType borrowerType;
@@ -64,10 +65,10 @@ public class NfseModel implements Serializable {
 	@Column
 	private String borrower;
 
-	@Column()
+	@Column
 	private String borrowerCnpjOrCpf;
 
-	@Column()
+	@Column
 	private String borrowerEconomicRegistration;
 
 	@Column
@@ -86,7 +87,6 @@ public class NfseModel implements Serializable {
 	private String borrowerDistrict;
 
 	// Invoice Items
-
 	@Column
 	private String placeOfProvision;
 
@@ -124,7 +124,6 @@ public class NfseModel implements Serializable {
 	private String description;
 
 	// Federal taxes
-
 	@Column
 	private double incomeTax;
 
@@ -135,7 +134,6 @@ public class NfseModel implements Serializable {
 	private double cofins;
 
 	// Values
-
 	@Column
 	private double amount;
 
@@ -158,7 +156,7 @@ public class NfseModel implements Serializable {
 	private double totalFederalTaxes;
 
 	@Column
-	private double conditionalDescount;
+	private double conditionalDiscount;
 
 	@Column
 	private double netValue;

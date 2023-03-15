@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<retorno>
+	<mensagem>
+		<codigo>00001 - Sucesso</codigo>
+	</mensagem>
+	<numero_nfse></numero_nfse>
+	<serie_nfse></serie_nfse>
+	<data_nfse></data_nfse>
+	<hora_nfse></hora_nfse>
+	<situacao_codigo_nfse></situacao_codigo_nfse>
+	<arquivo_gerador_nfse></arquivo_gerador_nfse>
+	<nome_arquivo_gerado_eletron></nome_arquivo_gerado_eletron>
+	<link_nfse></link_nfse>
+	<cod_verificador_autenticidade></cod_verificador_autenticidade>
+	<codigo_html></codigo_html>
+</retorno>

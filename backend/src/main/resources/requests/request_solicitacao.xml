@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<solicitacao_cancelamento>
+	<nfse_teste>1</nfse_teste>
+	<prestador>
+		<cpfcnpj></cpfcnpj>
+		<cidade></cidade>
+	</prestador>
+	<documentos>
+		<nfse>
+			<numero></numero>
+			<serie></serie>
+			<observacao></observacao>
+		</nfse>
+	</documentos>
+</solicitacao_cancelamento>

@@ -1,5 +1,5 @@
 package devs2blu.sysout.nfse.enums;
 
-public enum userRole {
+public enum UserRole {
 	USER
 }

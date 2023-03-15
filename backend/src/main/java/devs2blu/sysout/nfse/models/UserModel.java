@@ -1,31 +1,46 @@
 package devs2blu.sysout.nfse.models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import devs2blu.sysout.nfse.enums.userRole;
-import jakarta.persistence.*;
+
+import devs2blu.sysout.nfse.enums.UserRole;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
 
 @Data
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TB_USERS")
+@Table(name = "users")
 public class UserModel implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
+
+	@JsonIgnore
+	@Builder.Default
+	@OneToMany(mappedBy = "user")
+	private List<NfseModel> nfses = new ArrayList<>();
 
 	@Column(nullable = false)
 	private String name;
@@ -59,7 +74,7 @@ public class UserModel implements UserDetails {
 
 	private String number;
 
-	private userRole role;
+	private UserRole role;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

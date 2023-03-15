@@ -24,5 +24,4 @@ public class UserController {
 		UserDto user = userService.getUserInfo(authorizationHeader);
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
-
 }

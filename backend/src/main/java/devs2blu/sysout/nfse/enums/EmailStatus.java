@@ -1,6 +1,6 @@
 package devs2blu.sysout.nfse.enums;
 
-public enum emailStatus {
+public enum EmailStatus {
 	SENT,
 	ERROR
 }
