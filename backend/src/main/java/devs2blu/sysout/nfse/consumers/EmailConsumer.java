@@ -1,6 +1,6 @@
 package devs2blu.sysout.nfse.consumers;
 
-import devs2blu.sysout.nfse.enums.emailStatus;
+import devs2blu.sysout.nfse.enums.EmailStatus;
 import devs2blu.sysout.nfse.models.EmailModel;
 import devs2blu.sysout.nfse.services.EmailService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -15,27 +15,27 @@ import java.time.LocalDateTime;
 @Component
 public class EmailConsumer {
 
-    @Autowired
-    EmailService emailService;
+	@Autowired
+	EmailService emailService;
 
-    @Autowired
-    private JavaMailSender emailSender;
+	@Autowired
+	private JavaMailSender emailSender;
 
-    @RabbitListener(queues = "email_queue")
-    public void receiveEmail (EmailModel emailModel) {
-        emailModel.setSendDateEmail(LocalDateTime.now());
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(emailModel.getEmailFrom());
-            message.setTo(emailModel.getEmailTo());
-            message.setSubject(emailModel.getSubject());
-            message.setText(emailModel.getText());
-            emailSender.send(message);
+	@RabbitListener(queues = "email_queue")
+	public void receiveEmail(EmailModel emailModel) {
+		emailModel.setSendDateEmail(LocalDateTime.now());
+		try {
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setFrom(emailModel.getEmailFrom());
+			message.setTo(emailModel.getEmailTo());
+			message.setSubject(emailModel.getSubject());
+			message.setText(emailModel.getText());
+			emailSender.send(message);
 
-            emailModel.setEmailStatus(emailStatus.SENT);
-        } catch (MailException e) {
-            emailModel.setEmailStatus(emailStatus.ERROR);
-        }
-    }
+			emailModel.setEmailStatus(EmailStatus.SENT);
+		} catch (MailException e) {
+			emailModel.setEmailStatus(EmailStatus.ERROR);
+		}
+	}
 
 }

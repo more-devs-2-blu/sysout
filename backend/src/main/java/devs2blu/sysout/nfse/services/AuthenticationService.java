@@ -3,7 +3,7 @@ package devs2blu.sysout.nfse.services;
 import devs2blu.sysout.nfse.dtos.AuthenticationRequest;
 import devs2blu.sysout.nfse.dtos.AuthenticationResponse;
 import devs2blu.sysout.nfse.dtos.UserDto;
-import devs2blu.sysout.nfse.enums.userRole;
+import devs2blu.sysout.nfse.enums.UserRole;
 import devs2blu.sysout.nfse.exceptions.RepeatedEmailException;
 import devs2blu.sysout.nfse.models.UserModel;
 import devs2blu.sysout.nfse.repositories.UserRepository;
@@ -37,7 +37,7 @@ public class AuthenticationService {
 				.address(userDto.getAddress())
 				.complement(userDto.getComplement())
 				.number(userDto.getNumber())
-				.role(userRole.USER)
+				.role(UserRole.USER)
 				.build();
 
 		if (isEmailRepeated(userDto.getEmail())) {

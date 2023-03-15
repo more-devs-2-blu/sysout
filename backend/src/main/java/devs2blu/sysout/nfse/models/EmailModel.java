@@ -1,6 +1,6 @@
 package devs2blu.sysout.nfse.models;
 
-import devs2blu.sysout.nfse.enums.emailStatus;
+import devs2blu.sysout.nfse.enums.EmailStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,5 +29,5 @@ public class EmailModel implements Serializable {
 
 	private LocalDateTime sendDateEmail;
 
-	private emailStatus emailStatus;
+	private EmailStatus emailStatus;
 }

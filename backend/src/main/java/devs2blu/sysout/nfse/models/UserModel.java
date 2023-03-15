@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import devs2blu.sysout.nfse.enums.userRole;
+import devs2blu.sysout.nfse.enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -74,7 +74,7 @@ public class UserModel implements UserDetails {
 
 	private String number;
 
-	private userRole role;
+	private UserRole role;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
