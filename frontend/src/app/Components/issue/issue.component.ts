@@ -1,9 +1,12 @@
 import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Issue } from 'src/app/Interfaces/issue';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { IssueService } from 'src/app/Services/issue.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -15,7 +18,8 @@ export class IssueComponent implements OnInit {
   constructor(
     private authenticateService: AuthenticateService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private issueService: IssueService 
   ) { }
   
   step: any = 1;
@@ -36,72 +40,17 @@ export class IssueComponent implements OnInit {
     });   
   
   }
-  //formatação do json do form
-  noteData = new FormGroup({
-    prestador: new FormGroup({
-      cnpj: new FormControl(''),
-      razaoSocial: new FormControl(''),
-      cadastroEco: new FormControl(''),
-      serie: new FormControl(''),
-      tipo: new FormControl(''),
-      dataEmissao: new FormControl(this.todayDate),
-      dataFato: new FormControl(this.todayDate),
-    }),
-    servico: new FormGroup({
-      enquadramento: new FormControl('', Validators.required),
-      localPrest: new FormControl('', Validators.required),
-      codLocal: new FormControl(''),
-      localInc: new FormControl('Timbó'),
-      discrim: new FormControl('', Validators.required),
-    }),
-    tomador: new FormGroup({
-      tipoTomador: new FormControl('', Validators.required),
-      tomador: new FormControl('', Validators.required),
-      cnpjToma: new FormControl('', Validators.required),
-      cadastroEcoToma: new FormControl(''),
-      cep: new FormControl('', Validators.required),
-      cidade: new FormControl('', Validators.required),
-      pais: new FormControl(''),
-      bairro: new FormControl('', Validators.required),
-      logra: new FormControl('', Validators.required),
-    }),
-    dadosFiscais: new FormGroup({
-      sitTribu: new FormControl(this.tribSituation()),
-      aliquota: new FormControl('2,00'),
-      valor: new FormControl('0,00', Validators.required),
-      descInco: new FormControl('0,00'),
-      valorDed: new FormControl('0,00'),
-      baseCalc: new FormControl('0,00'),
-      issqn: new FormControl('0,00'),
-      issrf: new FormControl('0,00'),
-    }),
-    tribFed: new FormGroup({
-      irFed: new FormControl('0,00'),
-      pis: new FormControl('0,00'),
-      cofins: new FormControl('0,00'),
-    }),
-    valores: new FormGroup({
-      valorTotal: new FormControl('0,00'),
-      descInc: new FormControl('0,00'),
-      deducao: new FormControl('0,00'),
-      baseCalc: new FormControl('1,00'),
-      totalIssqn: new FormControl('0,00'),
-      totalIssrf: new FormControl('0,00'),
-      totalFed: new FormControl('0,00'),
-      descCond: new FormControl('0,00'),
-      valorLiq: new FormControl('0,00'),
-    })
-  })
   
-  //função para enviar o json para o backend
-  submit(){
-    if(this.noteData.valid){
-      console.log(this.noteData);
-    }else{
-      this.showErrorMessage = true;
-      console.log("Preencha todos os campos");
-    }
+  public onIssueNFS(addForm: NgForm){
+    this.issueService.postIssue(addForm.value).subscribe(
+      (Response: Issue) =>{
+        console.log(Response);   
+      },(error: HttpErrorResponse) =>{
+        alert(error);
+      }
+      );
   }
+
   //função para troca de etapa do form
   next() {
     this.step = this.step + 1;
@@ -138,12 +87,12 @@ export class IssueComponent implements OnInit {
   //Autocomplete aliquota
   aliqValue(){
     if(this.servType == 702){
-      return '5,00';
+      return 5.00;
     }
     if(this.servType == 1406){
-      return '3,00';
+      return 3.00;
     }else{
-      return '2,00'
+      return 2.00;
     }
   }
   //Autocomplete valor liquido

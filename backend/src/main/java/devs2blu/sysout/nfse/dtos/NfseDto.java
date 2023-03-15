@@ -4,12 +4,12 @@ import devs2blu.sysout.nfse.enums.BorrowerType;
 import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+@Data
 public class NfseDto {
 
 	// Provider information
 
-	@NotBlank
+
 	private String providerEconomicRegistration;
 
 	@NotBlank
@@ -22,16 +22,15 @@ public class NfseDto {
 
 	// Borrower information
 
-	@NotBlank
+	@NotNull
 	private BorrowerType borrowerType;
 
 	@NotBlank
 	private String borrower;
 
-	@NotNull
+	@NotBlank
 	private String borrowerCnpjOrCpf;
 
-	@NotNull
 	private String borrowerEconomicRegistration;
 
 	@NotBlank
@@ -110,9 +109,6 @@ public class NfseDto {
 	private double deduction;
 
 	@NotNull
-	private double calculationBasis;
-
-	@NotNull
 	private double totalIssqn;
 
 	@NotNull
@@ -129,7 +125,7 @@ public class NfseDto {
 
 	// Invoice status
 
-	@NotNull
+
 	private InvoiceStatus invoiceStatus;
 
 }

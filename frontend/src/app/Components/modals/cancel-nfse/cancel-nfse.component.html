@@ -1,1 +1,49 @@
-<p>cancel-nfse works!</p>
+<!-- Botão cancelar -->
+<a class="nav-link" (click)="onOpenModal()">Cancelar NFS-e</a>
+
+<!-- Modal -->
+<div class="container" id="main-container">
+  <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="background-color: #F1F2F8;">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Cancelar NFS-e</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="container">
+          <div class="row row-cols-3 ps-1 mt-3">
+            <div class="col data-text"><b>N.º:</b> 001</div>
+            <div class="col data-text"><b>Data de emissão:</b> 15/03/2023</div>
+            <div class="col data-text"><b>Serviço</b> Programação</div>
+          </div>
+          <div class="row row-cols-3 ps-1 mt-1">
+            <div class="col data-text"><b>CNPJ:</b> 25.825.307/0001-52</div>
+            <div class="col data-text"><b>Cliente:</b> Ângela Dias</div>
+            <div class="col data-text"><b>Valor Líquido:</b> R$ 120.00</div>
+          </div>
+        </div>
+        <hr>
+        <div class="modal-body">
+          <form (ngSubmit) = "submit()" [formGroup]="cancelForm" #formDir="ngForm">
+            <div class="form-group">
+              <label for="cancelText" class="form-label mb-1">Informe o motivo do cancelamento</label>
+              <textarea formControlName="description" class="form-control" rows="5" maxlength="250" placeholder="Motivo do cancelamento..." required></textarea>
+            </div>
+            <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
+              <p *ngIf="description.errors?.['required']"> Campo obrigatório.</p>
+              <p *ngIf="description.errors?.['maxlength']"> Limite de caracteres atingido.</p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-blue" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-red">Cancelar NFS-e</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

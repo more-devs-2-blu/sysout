@@ -1,5 +1,6 @@
 package devs2blu.sysout.nfse.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,6 +42,8 @@ public class NfseController {
 	public ResponseEntity<NfseModel> addNfse(@Valid @RequestBody NfseDto nfseDto) {
 		var nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
+		nfseModel.setDateOfIssue(LocalDateTime.now());
+		nfseModel.setTaxableEventDate(LocalDateTime.now());
 
 		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
 	}
@@ -66,7 +69,7 @@ public class NfseController {
 		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
 		if (!nfseModelOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!")	;
 		}
 		nfseService.deleteNfse(id);
 		return ResponseEntity.status(HttpStatus.OK).body("NFSE deleted successfully!");
