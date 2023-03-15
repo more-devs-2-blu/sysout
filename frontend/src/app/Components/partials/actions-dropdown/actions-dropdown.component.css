@@ -1,0 +1,18 @@
+span {
+  color: #31BEED;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  background-color: #F1F2F8;
+  padding: .6rem;
+}
+
+.dropdown-item {
+  margin: .5rem;
+}
+
+.dropdown-item span {
+  color: #31BEED;
+  margin-right: .5rem;
+}

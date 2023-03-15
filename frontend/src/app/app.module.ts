@@ -13,6 +13,7 @@ import { NavbarComponent } from './Components/partials/navbar/navbar.component';
 import { FooterComponent } from './Components/partials/footer/footer.component';
 import { ErrorPageComponent } from './Components/error-page/error-page.component';
 import { FilterComponent } from './Components/partials/filter/filter.component';
+import { ActionsDropdownComponent } from './Components/partials/actions-dropdown/actions-dropdown.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     FilterComponent,
-    CancelNfseComponent
+    CancelNfseComponent,
+    ActionsDropdownComponent
   ],
   imports: [
     BrowserModule,

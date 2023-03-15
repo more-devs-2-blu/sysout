@@ -11,3 +11,7 @@
   color: white;
   transform: scale(1.05);
 }
+
+input, select {
+  background-color: #F1F2F8;
+}
