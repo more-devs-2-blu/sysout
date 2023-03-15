@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Component
 public class ApiConsumer {
 	@Autowired
-	WebClient webClient;
+	private WebClient webClient;
 
 	@Value("${sysout.webservice.uri}")
 	private String webServiceUri;
@@ -27,7 +27,7 @@ public class ApiConsumer {
 				.part("file", body, MediaType.APPLICATION_XML)
 				.filename("request.xml");
 
-		String result = webClient
+		return webClient
 				.post()
 				.uri(webServiceUri)
 				.headers(headers -> headers.setBasicAuth(username, password))
@@ -36,7 +36,5 @@ public class ApiConsumer {
 				.retrieve()
 				.bodyToMono(String.class)
 				.block();
-
-		return result;
 	}
 }
