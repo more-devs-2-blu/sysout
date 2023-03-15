@@ -15,32 +15,31 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+	@Autowired
+	private final JwtAuthenticationFilter jwtAuthFilter;
 
-    @Autowired
-    private final JwtAuthenticationFilter jwtAuthFilter;
+	@Autowired
+	private final AuthenticationProvider authenticationProvider;
 
-    @Autowired
-    private final AuthenticationProvider authenticationProvider;
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.csrf()
+				.disable()
+				.authorizeHttpRequests()
+				.requestMatchers("/dashboard", "/user")
+				.authenticated()
+				.and()
+				.authorizeHttpRequests()
+				.requestMatchers("/**", "/auth/**")
+				.permitAll()
+				.and()
+				.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.authenticationProvider(authenticationProvider)
+				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf()
-                    .disable()
-                .authorizeHttpRequests()
-                    .requestMatchers("/dashboard", "/user")
-                    .authenticated()
-                    .and()
-                .authorizeHttpRequests()
-                    .requestMatchers("/**", "/auth/**")
-                    .permitAll()
-                    .and()
-                .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
-                .authenticationProvider(authenticationProvider)
-                    .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
+		return http.build();
+	}
 }

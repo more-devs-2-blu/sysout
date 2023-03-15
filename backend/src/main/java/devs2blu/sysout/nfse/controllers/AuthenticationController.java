@@ -15,21 +15,21 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationService authService;
+	@Autowired
+	private AuthenticationService authService;
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody UserDto userDto) {
-        try {
-            AuthenticationResponse newUser = authService.register(userDto);
-            return ResponseEntity.ok(newUser);
-        } catch (RepeatedEmailException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new AuthenticationResponse(e.getMessage()));
-        }
-    }
+	@PostMapping("/register")
+	public ResponseEntity<AuthenticationResponse> register(@RequestBody UserDto userDto) {
+		try {
+			AuthenticationResponse newUser = authService.register(userDto);
+			return ResponseEntity.ok(newUser);
+		} catch (RepeatedEmailException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new AuthenticationResponse(e.getMessage()));
+		}
+	}
 
-    @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-        return ResponseEntity.status(HttpStatus.OK).body(authService.authenticate(request));
-    }
+	@PostMapping("/login")
+	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+		return ResponseEntity.status(HttpStatus.OK).body(authService.authenticate(request));
+	}
 }

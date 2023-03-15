@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailProducer {
 
-    @Autowired
-    RabbitTemplate rabbitTemplate;
+	@Autowired
+	RabbitTemplate rabbitTemplate;
 
-    public void sendEmail(EmailDto emailDto) {
-        EmailModel emailModel = new EmailModel();
-        BeanUtils.copyProperties(emailDto, emailModel);
-        rabbitTemplate.convertAndSend("email_queue", emailModel);
-    }
+	public void sendEmail(EmailDto emailDto) {
+		EmailModel emailModel = new EmailModel();
+		BeanUtils.copyProperties(emailDto, emailModel);
+		rabbitTemplate.convertAndSend("email_queue", emailModel);
+	}
 
 }

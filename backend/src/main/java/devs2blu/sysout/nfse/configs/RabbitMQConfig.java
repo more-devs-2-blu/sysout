@@ -6,10 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-
-    @Bean
-    public Queue EmailQueue() {
-        return new Queue("email_queue", true);
-    }
-
+	@Bean
+	public Queue EmailQueue() {
+		return new Queue("email_queue", true);
+	}
 }
