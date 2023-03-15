@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "TB_NFSEs")
-public class 	NfseModel implements Serializable {
+public class NfseModel implements Serializable {
 
 	private static final Long serialVersionUID = 1L;
 

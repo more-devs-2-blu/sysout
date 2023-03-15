@@ -8,8 +8,8 @@
   width: auto;
 }
 
-@media (max-width: 576px) {
-  .modal-xxl-custom .modal-dialog {
+@media (max-width: 760px) {
+  .modal-xxl-custom {
     max-width: 100%;
   }
 }
