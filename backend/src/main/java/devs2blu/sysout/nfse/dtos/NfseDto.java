@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class NfseDto {
+
 	// Provider information
 	private String providerEconomicRegistration;
 

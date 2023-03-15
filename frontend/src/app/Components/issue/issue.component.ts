@@ -15,13 +15,14 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./issue.component.css']
 })
 export class IssueComponent implements OnInit {
+
   constructor(
     private authenticateService: AuthenticateService,
     private router: Router,
     private userService: UserService,
-    private issueService: IssueService 
+    private issueService: IssueService
   ) { }
-  
+
   step: any = 1;
   todayDate = new Date().toLocaleDateString();
   servType: any;
@@ -30,21 +31,21 @@ export class IssueComponent implements OnInit {
   discount: number = 0.00;
   public showErrorMessage = false;
   user: User | null = null;
-  
+
   ngOnInit() {
     document.body.style.backgroundColor = '';
     if (!this.authenticateService.isUserLogged()) this.router.navigate(['']);
-    
+
     this.userService.getUser().subscribe(user => {
       this.user = user;
-    });   
-  
+    });
+
   }
-  
+
   public onIssueNFS(addForm: NgForm){
     this.issueService.postIssue(addForm.value).subscribe(
       (Response: Issue) =>{
-        console.log(Response);   
+        console.log(Response);
       },(error: HttpErrorResponse) =>{
         alert(error);
       }
@@ -63,7 +64,7 @@ export class IssueComponent implements OnInit {
       this.step = this.step - 1;
     }
   }
-  
+
   //Autocomplete baseado no local de prestação de serviço
   localCode(){
     if(this.localCod == null){
@@ -75,7 +76,7 @@ export class IssueComponent implements OnInit {
       return 8357;
     }
   }
-  
+
   //Autocomplete do campo situação tributaria
   tribSituation(){
     if(this.servType != 702){
@@ -103,5 +104,5 @@ export class IssueComponent implements OnInit {
   issqnValue(){
     return 0.03 * this.totalValue;
   }
-  
+
 }
