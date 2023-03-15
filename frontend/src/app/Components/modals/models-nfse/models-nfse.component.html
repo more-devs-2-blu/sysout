@@ -1,26 +1,136 @@
-
 <!-- Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
+<div class="modal fade" id="models-nfse" tabindex="-1" aria-labelledby="models-nfseLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xxl-custom">
     <div class="modal-content">
-
-      <!-- Cabeçalho do modal -->
       <div class="modal-header">
-        <h4 class="modal-title">Modelos Salvos</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 class="modal-title fs-3" id="models-nfseLabel">Copiar dados de uma NFS-e</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <!-- Corpo do modal -->
       <div class="modal-body">
-        Conteúdo do modal
+        <div class="card-header mt-2 pb-0 border-0">
+          <h4 class="fw-bold">Pesquisar NFS-e</h4>
+        </div>
+        <div class="filter">
+          <div class="row">
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label mb-0 required">De</label>
+                <input type="text" class="form-control" id="exampleInput1"/>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label mb-0 required">Até</label>
+                <input type="text" class="form-control" id="exampleInput2" />
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput3" class="form-label mb-0 required">Serviço</label>
+                <input [readOnly]="true" type="text" class="form-control" id="exampleInput3" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label mb-0 required">Cliente</label>
+                <input type="text" class="form-control" id="exampleInput1"/>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label mb-0 required">Valor até</label>
+                <input type="text" class="form-control" id="exampleInput2" />
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="mb-3">
+                <label for="exampleInput3" class="form-label mb-0 required">Situação</label>
+                <input [readOnly]="true" type="text" class="form-control" id="exampleInput3" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="mb-3">
+                <div class="col-sm text-end border-2">
+                  <button class="btn btn-rounded">Pesquisar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Rodapé do modal -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+      <div class="modal-body">
+        <div class="card-header mb-3 pb-0 border-0">
+          <h4 class="fw-bold">Resultados</h4>
+        </div>
+        <div class="table-responsive col-lg-12">
+          <table class="table py-2 bg-white">
+            <thead>
+              <tr>
+                <th scope="col">Nº</th>
+                <th scope="col">Data Emissão</th>
+                <th scope="col">Competência</th>
+                <th scope="col">Data Fator Gerador</th>
+                <th scope="col">Serviço</th>
+                <th scope="col">Código</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">CPF/CNPJ</th>
+                <th scope="col">Valor total</th>
+                <th scope="col">Valor líquido</th>
+                <th scope="col">Situação</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">1</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>Programação</td>
+                <td>894030</td>
+                <td>Sênior</td>
+                <td>899.445.342-21</td>
+                <td>R$120,00</td>
+                <td>R$100,00</td>
+                <td class="status emited">Emitida</td>
+                <td><span class="copy-nfse-model-btn">Copiar</span></td>
+              </tr>
+              <tr>
+                <td scope="row">1</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>Programação</td>
+                <td>894030</td>
+                <td>Sênior</td>
+                <td>899.445.342-21</td>
+                <td>R$120,00</td>
+                <td>R$100,00</td>
+                <td class="status rejected">Rejeitada</td>
+                <td><span class="copy-nfse-model-btn">Copiar</span></td>
+              </tr>
+              <tr>
+                <td scope="row">1</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>14/03/2023</td>
+                <td>Programação</td>
+                <td>894030</td>
+                <td>Sênior</td>
+                <td>899.445.342-21</td>
+                <td>R$120,00</td>
+                <td>R$100,00</td>
+                <td class="status canceled">Cancelada</td>
+                <td><span class="copy-nfse-model-btn">Copiar</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
     </div>
   </div>
 </div>

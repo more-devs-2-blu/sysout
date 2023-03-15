@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'issue', component: IssueComponent},
-  { path: 'models', component: ModelsNfseComponent},
   { path: '**', component: ErrorPageComponent}
 ]
 
