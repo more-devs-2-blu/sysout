@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devs2blu.sysout.nfse.dtos.NfseDto;
+import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import devs2blu.sysout.nfse.models.NfseModel;
+import devs2blu.sysout.nfse.models.UserModel;
 import devs2blu.sysout.nfse.services.NfseService;
+import devs2blu.sysout.nfse.services.UserService;
 import jakarta.validation.Valid;
 import lombok.Data;
 
@@ -32,16 +35,26 @@ public class NfseController {
 	@Autowired
 	private NfseService nfseService;
 
-	@GetMapping
-	public ResponseEntity<List<NfseModel>> getAllNfse() {
-		List<NfseModel> nfseModels = nfseService.findAllNfse();
+	@Autowired
+	UserService userService;
+
+	@GetMapping("/all/{id}")
+	public ResponseEntity<List<NfseModel>> getNfsesByUserId(@PathVariable("id") UUID id) {
+		List<NfseModel> nfseModels = nfseService.findNfseByUserId(id);
 		return new ResponseEntity<>(nfseModels, HttpStatus.OK);
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<NfseModel> addNfse(@Valid @RequestBody NfseDto nfseDto) {
+	public ResponseEntity<Object> addNfse(@Valid @RequestBody NfseDto nfseDto) {
+		Optional<UserModel> userModelOptional = userService.findUserById(UUID.fromString(nfseDto.getUserId()));
+
+		if (!userModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSe has no owner!");
+		}
+
 		var nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
+		nfseModel.setUser(userModelOptional.get());
 		nfseModel.setDateOfIssue(LocalDateTime.now());
 		nfseModel.setTaxableEventDate(LocalDateTime.now());
 
@@ -53,7 +66,7 @@ public class NfseController {
 		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
 		if (!nfseModelOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSe doesn't exist!");
 		}
 
 		var nfseModel = new NfseModel();

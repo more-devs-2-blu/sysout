@@ -1,0 +1,13 @@
+{
+	"name": "test",
+	"email": "test",
+	"password": "test",
+	"userDocIdentification": "test",
+	"city": "test",
+	"state": "test",
+	"district": "test",
+	"cep": "test",
+	"address": "test",
+	"complement": "test",
+	"number": "test"
+}
