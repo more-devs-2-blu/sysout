@@ -2,6 +2,7 @@ package devs2blu.sysout.nfse.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -33,7 +34,7 @@ public class NfseModel implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_user")
-	private UserModel user;
+	private Optional<UserModel> user;
 
 	// Provider information
 	@Column
@@ -47,7 +48,7 @@ public class NfseModel implements Serializable {
 	private int series;
 
 	@Column
-	private char type;
+	private String type;
 
 	@Column
 	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")

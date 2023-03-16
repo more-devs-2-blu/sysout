@@ -9,11 +9,16 @@ import lombok.Data;
 @Data
 public class NfseDto {
 
+	private String userDocIdentification;
+
 	// Provider information
 	private String providerEconomicRegistration;
 
 	@NotBlank
 	private String providerCnpjOrCpf;
+
+	@NotNull
+	private String type;
 
 	// Invoice information
 	@NotNull

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import devs2blu.sysout.nfse.models.UserModel;
+import devs2blu.sysout.nfse.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,9 @@ public class NfseController {
 	@Autowired
 	private NfseService nfseService;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@GetMapping
 	public ResponseEntity<List<NfseModel>> getAllNfse() {
 		List<NfseModel> nfseModels = nfseService.findAllNfse();
@@ -39,9 +44,11 @@ public class NfseController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<NfseModel> addNfse(@Valid @RequestBody NfseDto nfseDto) {
-		var nfseModel = new NfseModel();
+	public ResponseEntity<NfseModel> addNfse(@RequestBody NfseDto nfseDto) {
+		NfseModel nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
+		Optional<UserModel> userModel = userRepository.findByUserDocIdentification(nfseDto.getUserDocIdentification());
+		nfseModel.setUser(userModel);
 		nfseModel.setDateOfIssue(LocalDateTime.now());
 		nfseModel.setTaxableEventDate(LocalDateTime.now());
 
