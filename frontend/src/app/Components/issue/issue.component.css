@@ -31,11 +31,18 @@ html{
     border: 1px solid #5F6D7E;
 }
 
-.btn{
+.no-border{
     color: #fff;
     background-color: #31BEED;
-    border: #31BEED;
+    border: solid 2px #31BEED;
     margin-left: 5px;
+}
+
+.bordered{
+  color: #31BEED;
+  background-color:rgb(0, 0, 0,0);
+  border: solid 2px #31BEED;
+  margin-left: 5px;
 }
 
 #submitForm{

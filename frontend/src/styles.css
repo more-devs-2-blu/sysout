@@ -20,6 +20,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+body {
+  padding-bottom: 70px;
+}
+
 .bg-purple {
   --color-background: var(--color-light-purple);
 }

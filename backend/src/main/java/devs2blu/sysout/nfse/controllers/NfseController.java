@@ -34,7 +34,7 @@ import lombok.Data;
 @Data
 @RestController
 @RequestMapping("/nfse")
-public class NfseController {
+public class  NfseController {
 
 	@Autowired
 	private WebClientConfig webClientConfig;
