@@ -1,0 +1,16 @@
+.required:after {
+    content:" *"; 
+    color: red;
+}
+
+.btn{
+    color: #31BEED;
+    border: 2px solid #31BEED;
+    margin-left: 5px;
+}
+
+#submitForm{
+    color: #ffffff;
+    background-color: #31BEED;
+    border-color: #31BEED;
+}

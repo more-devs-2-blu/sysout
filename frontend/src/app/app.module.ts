@@ -14,6 +14,7 @@ import { FooterComponent } from './Components/partials/footer/footer.component';
 import { ErrorPageComponent } from './Components/error-page/error-page.component';
 import { FilterComponent } from './Components/partials/filter/filter.component';
 import { ActionsDropdownComponent } from './Components/partials/actions-dropdown/actions-dropdown.component';
+import { EditProfileComponent } from './Components/modals/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'issue', component: IssueComponent},
   { path: 'models', component: ModelsNfseComponent},
   { path: 'cancelar', component: CancelNfseComponent},
+  { path: 'edit-profile', component: EditProfileComponent},
   { path: '**', component: ErrorPageComponent}
 ]
 
@@ -36,7 +38,8 @@ const routes: Routes = [
     FooterComponent,
     FilterComponent,
     CancelNfseComponent,
-    ActionsDropdownComponent
+    ActionsDropdownComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

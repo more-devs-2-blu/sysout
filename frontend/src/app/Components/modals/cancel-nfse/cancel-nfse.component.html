@@ -39,7 +39,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-blue" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-red">Cancelar NFS-e</button>
+          <button [disabled]="formDir.invalid"type="button" class="btn btn-red">Cancelar NFS-e</button>
         </div>
       </div>
     </div>
