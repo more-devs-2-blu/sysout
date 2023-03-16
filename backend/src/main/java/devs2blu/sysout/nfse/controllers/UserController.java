@@ -53,7 +53,6 @@ public class UserController {
 	public ResponseEntity<Object> addNfse(@Valid @RequestBody UserDto userDto) {
 		UserModel userModel = new UserModel();
 		BeanUtils.copyProperties(userDto, userModel);
-		userModel.setRole(UserRole.USER);
 		return new ResponseEntity<>(userService.saveUser(userModel), HttpStatus.OK);
 	}
 
