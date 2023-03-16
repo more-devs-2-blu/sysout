@@ -1,12 +1,9 @@
 package devs2blu.sysout.nfse.controllers;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import devs2blu.sysout.nfse.models.UserModel;
-import devs2blu.sysout.nfse.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import devs2blu.sysout.nfse.configs.WebClientConfig;
+import devs2blu.sysout.nfse.consumers.ApiConsumer;
 import devs2blu.sysout.nfse.dtos.NfseDto;
 import devs2blu.sysout.nfse.models.NfseModel;
 import devs2blu.sysout.nfse.models.UserModel;
@@ -35,9 +32,8 @@ import lombok.Data;
 @RestController
 @RequestMapping("/nfse")
 public class NfseController {
-
 	@Autowired
-	private WebClientConfig webClientConfig;
+	private ApiConsumer apiConsumer;
 
 	@Autowired
 	private NfseService nfseService;
@@ -53,23 +49,19 @@ public class NfseController {
 
 	@PostMapping("/add")
 	public ResponseEntity<Object> addNfse(@Valid @RequestBody NfseDto nfseDto) {
-		Optional<UserModel> userModelOptional = userService.findUserById(UUID.fromString(nfseDto.getUserId()));
+		Optional<UserModel> userModelOptional = userService.findUserById(nfseDto.getUserId());
 
 		if (!userModelOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSe has no owner!");
 		}
 
-		var nfseModel = new NfseModel();
+		NfseModel nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
-		nfseModel.setUser(userModelOptional.get());
-		nfseModel.setDateOfIssue(LocalDateTime.now());
-		nfseModel.setTaxableEventDate(LocalDateTime.now());
-
 		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
 	}
 
 	@PostMapping("/cancel")
-	public ResponseEntity<?> cancelarNFS(@RequestParam int series) {
+	public ResponseEntity<?> cancelarNfse(@RequestParam int series) {
 		try {
 			nfseService.cancelNfse(series);
 			return ResponseEntity.ok("NFS-e cancelada com sucesso.");
@@ -86,7 +78,7 @@ public class NfseController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSe doesn't exist!");
 		}
 
-		var nfseModel = new NfseModel();
+		NfseModel nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
 		nfseModel.setId(nfseModelOptional.get().getId());
 
@@ -101,6 +93,7 @@ public class NfseController {
 		if (!nfseModelOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE doesn't exist!");
 		}
+
 		nfseService.deleteNfse(id);
 		return ResponseEntity.status(HttpStatus.OK).body("NFSE deleted successfully!");
 	}
@@ -113,10 +106,15 @@ public class NfseController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE doesn't exist!");
 		}
 
-		var nfseDto = new NfseDto();
+		NfseDto nfseDto = new NfseDto();
 		BeanUtils.copyProperties(nfseModelOptional.get(), nfseDto);
-		System.out.println(nfseService.nfseToXml(nfseDto));
 
-		return ResponseEntity.status(HttpStatus.OK).body("NFSE emmited successfully!");
+		String username = "25.825.307/0001-52";
+		String password = "Teste@2023";
+
+		String body = nfseService.nfseToXml(nfseDto);
+		System.out.println(apiConsumer.request(username, password, body));
+
+		return ResponseEntity.status(HttpStatus.OK).body("Emission request sent successfully!");
 	}
 }

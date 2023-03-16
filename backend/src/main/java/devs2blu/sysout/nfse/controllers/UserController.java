@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devs2blu.sysout.nfse.dtos.UserDto;
-import devs2blu.sysout.nfse.enums.UserRole;
 import devs2blu.sysout.nfse.models.UserModel;
 import devs2blu.sysout.nfse.services.AuthenticationService;
 import devs2blu.sysout.nfse.services.UserService;

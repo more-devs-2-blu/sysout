@@ -7,8 +7,8 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import devs2blu.sysout.nfse.enums.BorrowerType;
-import devs2blu.sysout.nfse.enums.InvoiceStatus;
+import devs2blu.sysout.nfse.enums.TipoTomadorEnum;
+import devs2blu.sysout.nfse.enums.StatusNfseEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,8 +17,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,103 +25,51 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "nfses")
 public class NfseModel implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(unique = true, updatable = false)
-    private UUID id;
+	// Informações da nota
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	@Column(unique = true, updatable = false)
+	private UUID id;
 
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "id_user")
-    private UserModel user;
+	@Column(nullable = false)
+	private UUID userId;
 
-    // Provider information
-    private String providerEconomicRegistration;
+	@Column(nullable = false)
+	private StatusNfseEnum statusNfse;
 
-    private String providerCnpjOrCpf;
+	@Column(nullable = false)
+	private double valorTotal;
 
-    // Invoice information
-    @Column(nullable = false)
-    private int series;
+	// Informação do prestador
+	@Column(nullable = false)
+	private String cpfCnpjPrestador;
 
-    private String type;
+	@Column(nullable = false)
+	private String cidadePrestador;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime dateOfIssue;
+	// Informação do tomador
+	@Column(nullable = false)
+	private TipoTomadorEnum tipoTomador;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime TaxableEventDate;
+	// Item da nota
+	@Column(nullable = false)
+	private int codigoLocalPrestacaoServico;
 
-    // Borrower information
-    private BorrowerType borrowerType;
+	@Column(nullable = false)
+	private int codigoItemListaServico;
 
-    private String borrower;
+	@Column(nullable = false)
+	private String descritivo;
 
-    private String borrowerCnpjOrCpf;
+	@Column(nullable = false)
+	private double aliquotaItemListaServico;
 
-    private String borrowerEconomicRegistration;
+	@Column(nullable = false)
+	private int situacaoTributaria;
 
-    private String borrowerCity;
+	@Column(nullable = false)
+	private double valorTributavel;
 
-    private String borrowerCep;
-
-    private String borrowerCountry;
-
-    private String borrowerStreet;
-
-    private String borrowerDistrict;
-
-    // Invoice Items
-    private String placeOfProvision;
-
-    private String serviceList;
-
-    private String placeOfIncidence;
-
-    private String taxSituation;
-
-    private double timboRate;
-
-    private double serviceValue;
-
-    private double discountUnconditional;
-
-    private double dedutionAmount;
-
-    private double calculationBase;
-
-    private double ISSQN;
-
-    private double ISSRF;
-
-    private String description;
-
-    // Federal taxes
-    private double incomeTax;
-
-    private double pis;
-
-    private double cofins;
-
-    // Values
-    private double amount;
-
-    private double unconditionalDiscount;
-
-    private double deduction;
-
-    private double calculationBasis;
-
-    private double totalIssqn;
-
-    private double totalIssrf;
-
-    private double totalFederalTaxes;
-
-    private double conditionalDiscount;
-
-    private double netValue;
-
-    // Invoice status
-    private InvoiceStatus invoiceStatus;
+	@Column(nullable = false)
+	private String tributaMunicipioPrestador;
 }

@@ -1,7 +1,9 @@
 package devs2blu.sysout.nfse.dtos;
 
-import devs2blu.sysout.nfse.enums.BorrowerType;
-import devs2blu.sysout.nfse.enums.InvoiceStatus;
+import java.util.UUID;
+
+import devs2blu.sysout.nfse.enums.StatusNfseEnum;
+import devs2blu.sysout.nfse.enums.TipoTomadorEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -10,129 +12,45 @@ import lombok.Data;
 @Data
 @XmlRootElement(name = "nfse")
 public class NfseDto {
-	// Owner
-	@NotBlank
-	private String userId;
+	// Informações da nota
+	private UUID id;
 
-	// Provider information
-	private String providerEconomicRegistration;
+	private UUID userId;
 
-	@NotBlank
-	private String providerCnpjOrCpf;
+	private StatusNfseEnum statusNfse;
 
-	// Invoice information
 	@NotNull
-	private int series;
+	private double valorTotal;
 
-	private char type;
+	// Informação do prestador
+	@NotBlank
+	private String cpfCnpjPrestador;
 
 	@NotBlank
-	private String dateOfIssue;
+	private String cidadePrestador;
+
+	// Informação do tomador
+	private TipoTomadorEnum tipoTomador;
+
+	// Item da nota
+	@NotNull
+	private int codigoLocalPrestacaoServico;
+
+	@NotNull
+	private int codigoItemListaServico;
 
 	@NotBlank
-	private String taxableEventDate;
+	private String descritivo;
 
-	// Borrower information
-	private BorrowerType borrowerType;
+	@NotNull
+	private double aliquotaItemListaServico;
+
+	@NotNull
+	private int situacaoTributaria;
+
+	@NotNull
+	private double valorTributavel;
 
 	@NotBlank
-	private String borrower;
-
-	@NotBlank
-	private String borrowerCnpjOrCpf;
-
-	private String borrowerEconomicRegistration;
-
-	@NotBlank
-	private String borrowerCity;
-
-	@NotBlank
-	private String borrowerCep;
-
-	@NotBlank
-	private String borrowerCountry;
-
-	@NotBlank
-	private String borrowerStreet;
-
-	@NotBlank
-	private String borrowerDistrict;
-
-	// Invoice Items
-	@NotBlank
-	private String placeOfProvision;
-
-	@NotBlank
-	private String serviceList;
-
-	@NotBlank
-	private String placeOfIncidence;
-
-	@NotBlank
-	private String taxSituation;
-
-	@NotNull
-	private double timboRate;
-
-	@NotNull
-	private double serviceValue;
-
-	@NotNull
-	private double discountUnconditional;
-
-	@NotNull
-	private double dedutionAmount;
-
-	@NotNull
-	private double calculationBase;
-
-	@NotNull
-	private double ISSQN;
-
-	@NotNull
-	private double ISSRF;
-
-	@NotBlank
-	private String description;
-
-	// Federal taxes
-	@NotNull
-	private double incomeTax;
-
-	@NotNull
-	private double pis;
-
-	@NotNull
-	private double cofins;
-
-	// Values
-	@NotNull
-	private double amount;
-
-	@NotNull
-	private double unconditionalDiscount;
-
-	@NotNull
-	private double deduction;
-
-	@NotNull
-	private double calculationBasis;
-
-	@NotNull
-	private double totalIssqn;
-
-	@NotNull
-	private double totalIssrf;
-
-	@NotNull
-	private double totalFederalTaxes;
-
-	@NotNull
-	private double conditionalDiscount;
-
-	@NotNull
-	private double netValue;
-
-	// Invoice status
-	private InvoiceStatus invoiceStatus;
+	private String tributaMunicipioPrestador;
 }

@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import devs2blu.sysout.nfse.consumers.ApiConsumer;
 import devs2blu.sysout.nfse.dtos.NfseDto;
 import devs2blu.sysout.nfse.models.NfseModel;
 import devs2blu.sysout.nfse.models.UserModel;
@@ -53,9 +54,8 @@ public class NfseService {
 		return nfseRepository.findById(id);
 	}
 
-	public List<NfseModel> findNfseByUserId(UUID id) {
-		UserModel user = userRepository.findById(id).get();
-		return nfseRepository.findByUser(user);
+	public List<NfseModel> findNfseByUserId(UUID userId) {
+		return nfseRepository.findByUserId(userId);
 	}
 
 	public NfseModel editNfse(NfseModel nfseModel) {
