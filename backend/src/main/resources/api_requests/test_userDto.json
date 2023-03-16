@@ -1,0 +1,14 @@
+{
+	"name": "test",
+	"role": "USER",
+	"email": "test@test.test",
+	"password": "test",
+	"userDocIdentification": "test",
+	"city": "test",
+	"state": "test",
+	"district": "test",
+	"cep": "test",
+	"address": "test",
+	"complement": "test",
+	"number": "test"
+}

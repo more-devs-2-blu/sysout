@@ -18,4 +18,8 @@ export class UserService {
   public getUser(): Observable<User>{
     return this.http.get<User>(`${this.apiUrl}/user/`, { headers: this.headers })
   }
+
+  public editPassword(newPassword: string): Observable<string>{
+    return this.http.put<string>(`${this.apiUrl}/user/edit`, newPassword)
+  }
 }

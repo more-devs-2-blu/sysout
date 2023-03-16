@@ -8,8 +8,9 @@ import lombok.Data;
 
 @Data
 public class NfseDto {
-
-	private String userDocIdentification;
+	// Owner
+	@NotBlank
+	private String userId;
 
 	// Provider information
 	private String providerEconomicRegistration;
@@ -17,15 +18,19 @@ public class NfseDto {
 	@NotBlank
 	private String providerCnpjOrCpf;
 
-	@NotNull
-	private String type;
-
 	// Invoice information
 	@NotNull
 	private int series;
 
+	private char type;
+
+	@NotBlank
+	private String dateOfIssue;
+
+	@NotBlank
+	private String TaxableEventDate;
+
 	// Borrower information
-	@NotNull
 	private BorrowerType borrowerType;
 
 	@NotBlank
@@ -107,6 +112,9 @@ public class NfseDto {
 
 	@NotNull
 	private double deduction;
+
+	@NotNull
+	private double calculationBasis;
 
 	@NotNull
 	private double totalIssqn;
