@@ -37,11 +37,6 @@ public class UserModel implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
-	@JsonIgnore
-	@Builder.Default
-	@OneToMany(mappedBy = "user")
-	private List<NfseModel> nfses = new ArrayList<>();
-
 	@Column(nullable = false)
 	private String name;
 

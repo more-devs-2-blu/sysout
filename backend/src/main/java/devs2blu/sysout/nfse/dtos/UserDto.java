@@ -1,6 +1,6 @@
 package devs2blu.sysout.nfse.dtos;
 
-import org.hibernate.usertype.UserType;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import devs2blu.sysout.nfse.enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import java.util.UUID;
 
 @Data
 public class UserDto {
