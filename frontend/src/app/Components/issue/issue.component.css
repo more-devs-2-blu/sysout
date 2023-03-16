@@ -14,7 +14,7 @@ html{
 }
 
 .required:after {
-    content:" *"; 
+    content:" *";
     color: red;
 }
 
@@ -32,8 +32,9 @@ html{
 }
 
 .btn{
-    color: #31BEED;
-    border: 2px solid #31BEED;
+    color: #fff;
+    background-color: #31BEED;
+    border: #31BEED;
     margin-left: 5px;
 }
 

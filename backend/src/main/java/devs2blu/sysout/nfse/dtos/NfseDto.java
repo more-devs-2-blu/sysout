@@ -28,7 +28,7 @@ public class NfseDto {
 	private String dateOfIssue;
 
 	@NotBlank
-	private String TaxableEventDate;
+	private String taxableEventDate;
 
 	// Borrower information
 	private BorrowerType borrowerType;

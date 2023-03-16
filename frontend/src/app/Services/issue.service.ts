@@ -7,12 +7,13 @@ import { Issue } from '../Interfaces/issue';
 @Injectable({
   providedIn: 'root'
 })
+
 export class IssueService {
   private apiUrl = environment.baseApiUrl;
 
   constructor(private http: HttpClient) { }
 
   public postIssue(issue: Issue): Observable<Issue>{
-    return this.http.post<Issue>(`${this.apiUrl}/nfse/add`, issue )
+    return this.http.post<Issue>(`${this.apiUrl}/nfse/add`, issue)
   }
 }
