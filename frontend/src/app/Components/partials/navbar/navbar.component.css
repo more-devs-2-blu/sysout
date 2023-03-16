@@ -16,11 +16,6 @@
 
 /* navbar dropdown */
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 1px; /* remove the gap so it doesn't close */
-}
-
 .dropdown-menu{
   background-color: #48266E;
   border-radius: 0;

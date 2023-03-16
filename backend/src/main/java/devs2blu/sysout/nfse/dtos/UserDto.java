@@ -1,7 +1,11 @@
 package devs2blu.sysout.nfse.dtos;
 
+import org.hibernate.usertype.UserType;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import devs2blu.sysout.nfse.enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -23,6 +27,9 @@ public class UserDto {
 	@NotBlank
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String userDocIdentification;
+
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private UserRole role;
 
 	@NotBlank
 	@JsonInclude(JsonInclude.Include.NON_NULL)
