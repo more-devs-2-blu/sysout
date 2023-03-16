@@ -1,33 +1,29 @@
 package devs2blu.sysout.nfse.controllers;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import devs2blu.sysout.nfse.configs.WebClientConfig;
 import devs2blu.sysout.nfse.dtos.NfseDto;
 import devs2blu.sysout.nfse.models.NfseModel;
 import devs2blu.sysout.nfse.services.NfseService;
 import jakarta.validation.Valid;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Data
 @RestController
 @RequestMapping("/nfse")
 public class NfseController {
+
+	@Autowired
+	private WebClientConfig webClientConfig;
 
 	@Autowired
 	private NfseService nfseService;
@@ -46,6 +42,16 @@ public class NfseController {
 		nfseModel.setTaxableEventDate(LocalDateTime.now());
 
 		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
+	}
+
+	@PostMapping("/cancel")
+	public ResponseEntity<?> cancelarNFS(@RequestParam int series) {
+		try {
+			nfseService.cancelNfse(series);
+			return ResponseEntity.ok("NFS-e cancelada com sucesso.");
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Não foi possível cancelar a NFS-e. Erro: " + e.getMessage());
+		}
 	}
 
 	@PutMapping("/{id}")
