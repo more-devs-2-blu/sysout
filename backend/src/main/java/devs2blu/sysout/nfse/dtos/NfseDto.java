@@ -2,6 +2,8 @@ package devs2blu.sysout.nfse.dtos;
 
 import java.util.UUID;
 
+import org.hibernate.validator.cfg.defs.UUIDDef;
+
 import devs2blu.sysout.nfse.enums.StatusNfseEnum;
 import devs2blu.sysout.nfse.enums.TipoTomadorEnum;
 import jakarta.validation.constraints.NotBlank;
@@ -9,13 +11,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @XmlRootElement(name = "nfse")
 public class NfseDto {
 	// Informações da nota
-	private UUID id;
+	private UUIDDef id;
 
 	private UUID userId;
 
