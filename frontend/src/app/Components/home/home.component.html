@@ -11,20 +11,20 @@
   </div>
 </div>
 <hr class="linha">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <div class="d-flex align-items-center my-3">
-          <h4 class="fw-bold me-3">Informações gerais</h4>
-          <select class="form-select form-select-sm" aria-label="Default select example" style="width: 170px;">
-            <option selected>Últimos 30 dias</option>
-            <option value="1">Últimos 60 dias</option>
-            <option value="2">Últimos 90 dias</option>
-          </select>
-        </div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex align-items-center my-3">
+        <h4 class="fw-bold me-3">Informações gerais</h4>
+        <select class="form-select form-select-sm" aria-label="Default select example" style="width: 170px;">
+          <option selected>Últimos 30 dias</option>
+          <option value="1">Últimos 60 dias</option>
+          <option value="2">Últimos 90 dias</option>
+        </select>
       </div>
     </div>
   </div>
+</div>
 
 <div class="container text-center">
   <div class="row mb-5">
@@ -82,7 +82,7 @@
       <div class="card-header mb-3 pb-0 border-0">
         <h4 class="fw-bold">NFS-e emitidas</h4>
       </div>
-      <div class="table-responsive col-lg-12">
+      <div class="table-responsive">
         <table class="table py-2 p-5">
           <thead>
             <tr>
@@ -113,7 +113,7 @@
               <td>R$120,00</td>
               <td>R$100,00</td>
               <td class="status emited">Emitida</td>
-              <td><span class="more material-icons-sharp">more_vert</span></td>
+              <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
             <tr>
               <td scope="row">1</td>
@@ -126,8 +126,8 @@
               <td>899.445.342-21</td>
               <td>R$120,00</td>
               <td>R$100,00</td>
-              <td class="status rejected">Rejeitada</td>
-              <td><span class="more material-icons-sharp">more_vert</span></td>
+              <td class="status emited">Emitida</td>
+              <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
             <tr>
               <td scope="row">1</td>
@@ -140,8 +140,36 @@
               <td>899.445.342-21</td>
               <td>R$120,00</td>
               <td>R$100,00</td>
-              <td class="status canceled">Cancelada</td>
-              <td><span class="more material-icons-sharp">more_vert</span></td>
+              <td class="status emited">Emitida</td>
+              <td><app-actions-dropdown></app-actions-dropdown></td>
+            </tr>
+            <tr>
+              <td scope="row">1</td>
+              <td>14/03/2023</td>
+              <td>14/03/2023</td>
+              <td>14/03/2023</td>
+              <td>Programação</td>
+              <td>894030</td>
+              <td>Sênior</td>
+              <td>899.445.342-21</td>
+              <td>R$120,00</td>
+              <td>R$100,00</td>
+              <td class="status emited">Emitida</td>
+              <td><app-actions-dropdown></app-actions-dropdown></td>
+            </tr>
+            <tr>
+              <td scope="row">1</td>
+              <td>14/03/2023</td>
+              <td>14/03/2023</td>
+              <td>14/03/2023</td>
+              <td>Programação</td>
+              <td>894030</td>
+              <td>Sênior</td>
+              <td>899.445.342-21</td>
+              <td>R$120,00</td>
+              <td>R$100,00</td>
+              <td class="status emited">Emitida</td>
+              <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
           </tbody>
         </table>
