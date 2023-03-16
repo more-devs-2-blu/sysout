@@ -15,6 +15,7 @@ import { ErrorPageComponent } from './Components/error-page/error-page.component
 import { FilterComponent } from './Components/partials/filter/filter.component';
 import { ActionsDropdownComponent } from './Components/partials/actions-dropdown/actions-dropdown.component';
 import { EditProfileComponent } from './Components/modals/edit-profile/edit-profile.component';
+import { HelpPageComponent } from './Components/help-page/help-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'issue', component: IssueComponent},
   { path: 'models', component: ModelsNfseComponent},
   { path: 'cancelar', component: CancelNfseComponent},
-  { path: 'edit-profile', component: EditProfileComponent},
+  { path: 'edit-password', component: EditProfileComponent},
+  { path: 'help-page', component: HelpPageComponent},
   { path: '**', component: ErrorPageComponent}
 ]
 
@@ -39,7 +41,8 @@ const routes: Routes = [
     FilterComponent,
     CancelNfseComponent,
     ActionsDropdownComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    HelpPageComponent
   ],
   imports: [
     BrowserModule,
