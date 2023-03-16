@@ -1,5 +1,5 @@
 export interface Nfse {
-  id: string,
+  id: number,
   userId: string,
   dateOfIssue: string,
   taxableEventDate: string,

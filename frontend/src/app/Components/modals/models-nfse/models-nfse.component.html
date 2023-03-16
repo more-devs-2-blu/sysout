@@ -15,72 +15,48 @@
       <div class="modal-body">
         <div class="card-header mb-3 pb-0 border-0">
           <h4 class="fw-bold">Resultados</h4>
-        </div>
-        <div class="table-responsive col-lg-12">
-          <table class="table py-2 bg-white">
-            <thead>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Data Emissão</th>
-                <th scope="col">Competência</th>
-                <th scope="col">Data Fator Gerador</th>
-                <th scope="col">Serviço</th>
-                <th scope="col">Código</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">CPF/CNPJ</th>
-                <th scope="col">Valor total</th>
-                <th scope="col">Valor líquido</th>
-                <th scope="col">Situação</th>
-                <th scope="col">Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row">1</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>Programação</td>
-                <td>894030</td>
-                <td>Sênior</td>
-                <td>899.445.342-21</td>
-                <td>R$120,00</td>
-                <td>R$100,00</td>
-                <td class="status emited">Emitida</td>
-                <td><span class="copy-nfse-model-btn">Copiar</span></td>
-              </tr>
-              <tr>
-                <td scope="row">1</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>Programação</td>
-                <td>894030</td>
-                <td>Sênior</td>
-                <td>899.445.342-21</td>
-                <td>R$120,00</td>
-                <td>R$100,00</td>
-                <td class="status rejected">Rejeitada</td>
-                <td><span class="copy-nfse-model-btn">Copiar</span></td>
-              </tr>
-              <tr>
-                <td scope="row">1</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>14/03/2023</td>
-                <td>Programação</td>
-                <td>894030</td>
-                <td>Sênior</td>
-                <td>899.445.342-21</td>
-                <td>R$120,00</td>
-                <td>R$100,00</td>
-                <td class="status canceled">Cancelada</td>
-                <td><span class="copy-nfse-model-btn">Copiar</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="card-header mb-3 pb-0 border-0">
+                  <h4 class="fw-bold" id="issued">NFS-e emitidas</h4>
+                </div>
+                <div class="table-responsive">
+                  <table class="table py-2 p-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nº</th>
+                        <th scope="col">Data Emissão</th>
+                        <th scope="col">Competência</th>
+                        <th scope="col">Data Fator Gerador</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">CPF/CNPJ</th>
+                        <th scope="col">Valor total</th>
+                        <th scope="col">Valor líquido</th>
+                        <th scope="col">Situação</th>
+                        <th scope="col">Ação</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let nfse of nfses">
+                      <tr data-id="nfse.id">
+                        <td scope="row">1</td>
+                        <td>{{nfse.dateOfIssue}}</td>
+                        <td>{{nfse.dateOfIssue}}</td>
+                        <td>{{nfse.dateOfIssue}}</td>
+                        <td>Programação</td>
+                        <td>894030</td>
+                        <td>{{nfse.borrower}}</td>
+                        <td>{{nfse.borrowerCnpjOrCpf}}</td>
+                        <td>R${{nfse.amount}}</td>
+                        <td>R${{nfse.amount - nfse.totalIssqn}}</td>
+                        <td class="status emited">Emitida</td>
+                        <td><span class="copy-nfse-model-btn" (click)="copyNfse(nfse.id)">Copiar</span>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
