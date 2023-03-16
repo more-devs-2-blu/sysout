@@ -1,5 +1,7 @@
 export interface Issue {
-  userDocIdentification: string,
+  userId: string,
+  dateOfIssue: string,
+  taxableEventDate: string,
   providerEconomicRegistration?: string | null,
   providerCnpjOrCpf: string,
   series: number,

@@ -15,7 +15,7 @@
 <div class="container mt-5">
   <div class="card">
     <form #addForm="ngForm" (ngSubmit)="onIssueEmit(addForm)">
-      <input type="hidden" ngModel name="userDocIdentification" [(ngModel)]="user.userDocIdentification">
+      <input type="hidden" ngModel name="userId" [(ngModel)]="user.id">
       <!-- Primeira etapa -->
       <div class="step" id="step1">
         <div class="card-header mt-2 pb-0 border-0">
@@ -66,14 +66,14 @@
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data de Emissão</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="dataEmissao"
+                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="dateOfIssue"
                     id="exampleInput3" [ngModel]="todayDate" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label mb-0">Data do Fato Gerado</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="dataFato"
+                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="taxableEventDate"
                     id="exampleInput3" [ngModel]="todayDate" />
                 </div>
               </div>
