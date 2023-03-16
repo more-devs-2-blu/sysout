@@ -1,0 +1,8 @@
+#footerSpace{
+    height: 50px;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+}

@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'issue', component: IssueComponent},
+  { path: 'help-page', component: HelpPageComponent},
   { path: '**', component: ErrorPageComponent}
 ]
 
