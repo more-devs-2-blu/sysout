@@ -9,6 +9,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @XmlRootElement(name = "nfse")
 public class NfseDto {

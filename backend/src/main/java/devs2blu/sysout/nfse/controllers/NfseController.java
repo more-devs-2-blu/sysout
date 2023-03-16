@@ -32,6 +32,7 @@ import lombok.Data;
 @RestController
 @RequestMapping("/nfse")
 public class NfseController {
+
 	@Autowired
 	private ApiConsumer apiConsumer;
 

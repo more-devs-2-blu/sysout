@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [username]="username"></app-navbar>
 <!-- Cabeçalho -->
 <div class="container">
   <div class="row">
@@ -6,13 +6,13 @@
       <h2>Emitir Nota Fiscal Eletrônica</h2>
     </div>
     <div class="col-sm text-end py-4 border-0">
-      <button class="btn btn-rounded" data-bs-toggle="modal" data-bs-target="#models-nfse">Copiar Nota</button>
+      <button class="btn btn-rounded bordered" data-bs-toggle="modal" data-bs-target="#models-nfse">Modelos de Notas</button>
     </div>
   </div>
 </div>
 <hr class="linha">
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="card">
     <form #addForm="ngForm" (ngSubmit)="onIssueEmit(addForm)">
       <input type="hidden" ngModel name="userId" [(ngModel)]="user.id">
@@ -50,7 +50,7 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="series" class="form-label mb-0">Serie</label>
+                  <label for="series" class="form-label mb-0">Série</label>
                   <input type="text" class="form-control" ngModel name="series"/>
                 </div>
               </div>
@@ -420,11 +420,11 @@
 
 
       <!-- Card footer -->
-      <div class="card-footer text-end px-5 border-0">
+      <div class="card-footer text-end px-5 mb-3 border-0">
         <div class="error" *ngIf="showErrorMessage">Preencha todos os campos obrigatórios.</div>
-        <button type="button" class="btn btn-primary btn-rounded" (click)="previous()">Voltar</button>
-        <button type="button" *ngIf="step !== 3" class="btn btn-primary btn-rounded" (click)="next()">Avançar</button>
-        <button *ngIf="step === 3" type="submit" class="btn btn-primary btn-rounded" id="submitForm">Emitir</button>
+        <button type="button" class="btn bordered btn-rounded" (click)="previous()">Voltar</button>
+        <button type="button" *ngIf="step !== 3" class="btn no-border btn-primary btn-rounded" (click)="next()">Avançar</button>
+        <button *ngIf="step === 3" type="submit" class="btn no-border btn-primary btn-rounded" id="submitForm">Emitir</button>
       </div>
     </form>
   </div>

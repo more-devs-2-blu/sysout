@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Nfse } from 'src/app/Interfaces/nfse';
 
 @Component({
   selector: 'app-cancel-nfse',
@@ -10,24 +11,26 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class CancelNfseComponent {
 
+  @Input() nfse!: Nfse;
+
   cancelForm!: FormGroup
-
-  // função para validar campo descrição
-  get isDescriptionEmpty() {
-    const control = this.cancelForm.get('description');
-    return control?.touched && control.invalid;
-  }
-
-  ngOnInit() {
-    this.cancelForm = new FormGroup({
-      description: new FormControl('', [Validators.required]),
-    })
-    if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
-  }
 
   constructor(
     private authenticateService: AuthenticateService,
     private router: Router
-  ) {}
+    ) { }
 
-}
+    ngOnInit() {
+      this.cancelForm = new FormGroup({
+        description: new FormControl('', [Validators.required]),
+      })
+
+      if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
+    }
+
+    // função para validar campo descrição
+    get isDescriptionEmpty() {
+      const control = this.cancelForm.get('description');
+      return control?.touched && control.invalid;
+    }
+  }

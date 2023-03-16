@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Nfse } from 'src/app/Interfaces/nfse';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { NfseService } from 'src/app/Services/nfse.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -14,19 +15,30 @@ export class HomeComponent implements OnInit {
 
   user!: User;
   username!: string;
+  nfses: Nfse[] = [];
+  customersCount: any = {};
+  totalBilling: number = 0;
 
   constructor(
     private authenticateService: AuthenticateService,
     private router: Router,
     private userService: UserService,
+    private nfseService: NfseService
   ) {}
 
   ngOnInit() {
     if (!this.authenticateService.isUserLogged()) this.router.navigate(['login']);
     this.userService.getUser().subscribe((user) => {
       this.user = user;
-      localStorage.setItem('userId', user.id);
       this.username = user.name.split(' ')[0];
+      this.nfseService.getAllNfses(user.id).subscribe((Response) => {
+        this.nfses = Response;
+        this.nfses.forEach((nfse) => {
+          this.customersCount[nfse.borrowerCnpjOrCpf] = true;
+          this.totalBilling += nfse.amount;
+        })
+        this.customersCount = Object.keys(this.customersCount).length;
+      })
     });
   }
 

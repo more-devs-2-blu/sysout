@@ -1,0 +1,10 @@
+* {
+ color: #F5F5F5;
+}
+
+.fixed-bottom {
+  z-index: 1030;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}

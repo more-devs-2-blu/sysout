@@ -31,7 +31,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">65</h2>
+          <h2 class="card-title">{{nfses.length}}</h2>
           <p class="card-text">Nº de NFS-es emitidas</p>
         </div>
       </div>
@@ -39,7 +39,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">02</h2>
+          <h2 class="card-title">0</h2>
           <p class="card-text">Nº de NFS-es canceladas</p>
         </div>
       </div>
@@ -47,7 +47,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">58</h2>
+          <h2 class="card-title">{{customersCount}}</h2>
           <p class="card-text">Nº de clientes</p>
         </div>
       </div>
@@ -55,7 +55,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">R$10.030,96</h2>
+          <h2 class="card-title">R${{totalBilling}}</h2>
           <p class="card-text">Receita serviços prestados</p>
         </div>
       </div>
@@ -100,74 +100,18 @@
               <th scope="col">Ação</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody *ngFor="let nfse of nfses">
+            <tr data-id="nfse.id">
               <td scope="row">1</td>
-              <td>14/03/2023</td>
+              <td>{{nfse.dateOfIssue}}</td>
               <td>14/03/2023</td>
               <td>14/03/2023</td>
               <td>Programação</td>
               <td>894030</td>
-              <td>Sênior</td>
-              <td>899.445.342-21</td>
-              <td>R$120,00</td>
-              <td>R$100,00</td>
-              <td class="status emited">Emitida</td>
-              <td><app-actions-dropdown></app-actions-dropdown></td>
-            </tr>
-            <tr>
-              <td scope="row">1</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
-              <td>Sênior</td>
-              <td>899.445.342-21</td>
-              <td>R$120,00</td>
-              <td>R$100,00</td>
-              <td class="status emited">Emitida</td>
-              <td><app-actions-dropdown></app-actions-dropdown></td>
-            </tr>
-            <tr>
-              <td scope="row">1</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
-              <td>Sênior</td>
-              <td>899.445.342-21</td>
-              <td>R$120,00</td>
-              <td>R$100,00</td>
-              <td class="status emited">Emitida</td>
-              <td><app-actions-dropdown></app-actions-dropdown></td>
-            </tr>
-            <tr>
-              <td scope="row">1</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
-              <td>Sênior</td>
-              <td>899.445.342-21</td>
-              <td>R$120,00</td>
-              <td>R$100,00</td>
-              <td class="status emited">Emitida</td>
-              <td><app-actions-dropdown></app-actions-dropdown></td>
-            </tr>
-            <tr>
-              <td scope="row">1</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
-              <td>Sênior</td>
-              <td>899.445.342-21</td>
-              <td>R$120,00</td>
-              <td>R$100,00</td>
+              <td>{{nfse.borrower}}</td>
+              <td>{{nfse.borrowerCnpjOrCpf}}</td>
+              <td>R${{nfse.amount}}</td>
+              <td>R${{nfse.amount - nfse.totalIssqn}}</td>
               <td class="status emited">Emitida</td>
               <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
@@ -179,5 +123,3 @@
 </div>
 
 <app-footer></app-footer>
-
-<app-cancel-nfse></app-cancel-nfse>
