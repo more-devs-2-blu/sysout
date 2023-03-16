@@ -1,17 +1,5 @@
 package devs2blu.sysout.nfse.controllers;
 
-import devs2blu.sysout.nfse.configs.WebClientConfig;
-import devs2blu.sysout.nfse.dtos.NfseDto;
-import devs2blu.sysout.nfse.models.NfseModel;
-import devs2blu.sysout.nfse.services.NfseService;
-import jakarta.validation.Valid;
-import lombok.Data;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -30,21 +18,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import devs2blu.sysout.nfse.configs.WebClientConfig;
 import devs2blu.sysout.nfse.dtos.NfseDto;
-import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import devs2blu.sysout.nfse.models.NfseModel;
 import devs2blu.sysout.nfse.models.UserModel;
 import devs2blu.sysout.nfse.services.NfseService;
 import devs2blu.sysout.nfse.services.UserService;
 import jakarta.validation.Valid;
+import jakarta.xml.bind.JAXBException;
 import lombok.Data;
 
 @Data
 @RestController
 @RequestMapping("/nfse")
-public class NfseController {
+public class  NfseController {
 
 	@Autowired
 	private WebClientConfig webClientConfig;
@@ -109,9 +99,24 @@ public class NfseController {
 		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
 
 		if (!nfseModelOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE not exists!");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE doesn't exist!");
 		}
 		nfseService.deleteNfse(id);
 		return ResponseEntity.status(HttpStatus.OK).body("NFSE deleted successfully!");
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> emmitNfse(@PathVariable("id") UUID id) throws JAXBException {
+		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
+
+		if (!nfseModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSE doesn't exist!");
+		}
+
+		var nfseDto = new NfseDto();
+		BeanUtils.copyProperties(nfseModelOptional.get(), nfseDto);
+		System.out.println(nfseService.nfseToXml(nfseDto));
+
+		return ResponseEntity.status(HttpStatus.OK).body("NFSE emmited successfully!");
 	}
 }

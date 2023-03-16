@@ -3,6 +3,7 @@
 	"role": "USER",
 	"email": "test@test.test",
 	"password": "test",
+	"role": "USER",
 	"userDocIdentification": "test",
 	"city": "test",
 	"state": "test",

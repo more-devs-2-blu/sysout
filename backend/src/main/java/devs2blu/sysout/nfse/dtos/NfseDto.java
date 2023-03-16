@@ -4,11 +4,13 @@ import devs2blu.sysout.nfse.enums.BorrowerType;
 import devs2blu.sysout.nfse.enums.InvoiceStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
+@XmlRootElement(name = "nfse")
 public class NfseDto {
 
 	private UUID id;
