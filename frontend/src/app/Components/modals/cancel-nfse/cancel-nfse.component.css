@@ -1,3 +1,7 @@
+hr {
+  border: 0.25px solid rgb(161, 161, 161);
+}
+
 .btn-blue{
   color: #31BEED;
   border: 2px solid #31BEED;
@@ -15,6 +19,6 @@
   font-size: 14px;
 }
 
-hr {
-  border: 0.25px solid rgb(161, 161, 161);
+.border-red {
+  border: 1px solid red;
 }
