@@ -1,6 +1,7 @@
 {
 	"name": "test",
-	"email": "test",
+	"role": "USER",
+	"email": "test@test.test",
 	"password": "test",
 	"userDocIdentification": "test",
 	"city": "test",
