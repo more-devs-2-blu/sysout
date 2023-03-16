@@ -3,7 +3,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Issue } from 'src/app/Interfaces/issue';
+import { Address } from 'src/app/Interfaces/address';
+import { Nfse } from 'src/app/Interfaces/nfse';
 import { User } from 'src/app/Interfaces/user';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { IssueService } from 'src/app/Services/issue.service';
@@ -24,7 +25,15 @@ export class IssueComponent implements OnInit {
   discount: number = 0.00;
   showErrorMessage = false;
   user!: User;
-  issue?: Issue;
+  issue?: Nfse;
+  address: Address = {
+    'cep': '',
+    'localidade': '',
+    'bairro': '',
+    'logradouro': '',
+    'uf': '',
+  };
+  pais: string = 'Brasil';
 
   constructor(
     private authenticateService: AuthenticateService,
@@ -47,11 +56,21 @@ export class IssueComponent implements OnInit {
   onIssueEmit(form: NgForm): void {
     console.log(form.value);
 
-    this.issueService.postIssue(form.value).subscribe((response: Issue) => {
+    this.issueService.postIssue(form.value).subscribe((response: Nfse) => {
       console.log(response);
     }, (error: HttpErrorResponse) => {
       alert(error.message)
     })
+  }
+
+  searchCEP(): void {
+    const cep = document.getElementById('issue-cep') as HTMLInputElement;
+    if (cep && cep.value.length === 9) {
+      this.issueService.getCep(cep.value).subscribe((address) => {
+        this.address = address;
+      })
+    }
+
   }
 
   currentStep(step: number) {

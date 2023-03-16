@@ -1,4 +1,4 @@
-export interface Issue {
+export interface Nfse {
   userId: string,
   dateOfIssue: string,
   taxableEventDate: string,

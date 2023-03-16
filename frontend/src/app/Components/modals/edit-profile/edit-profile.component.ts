@@ -18,61 +18,48 @@ export class EditProfileComponent implements OnInit {
   newPassword: any;
   checkNewPassword: any;
 
+  ngOnInit() {
+    if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
 
-  public onOpenModal(): void{
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#cancelModal');
+    this.userService.getUser().subscribe(user => {
+      this.editUser = user;
+    });
+  }
 
-    container?.appendChild(button);
-    button.click();
-    }
+  submit() {
+    console.log(this.editUser);
 
-    ngOnInit() {      
-      if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
-
-      this.userService.getUser().subscribe(user => {
-        this.editUser = user;
-      });
-    }
-  
-    submit(){
-      console.log(this.editUser);
-      
-      if(this.currentPassword == this.editUser?.password){
-        if(this.newPassword == this.checkNewPassword){
-          this.userService.editPassword(this.newPassword).subscribe(
-            (Response: string) => {
-                console.log(Response);          
-                },(error: HttpErrorResponse) =>{
-                 alert(error);
-                }
-             );
-        } else {
-          console.log("As novas senhas não coincidem!");
-        }
+    if (this.currentPassword == this.editUser?.password) {
+      if (this.newPassword == this.checkNewPassword) {
+        this.userService.editPassword(this.newPassword).subscribe(
+          (Response: string) => {
+            console.log(Response);
+          }, (error: HttpErrorResponse) => {
+            alert(error);
+          }
+        );
       } else {
-        console.log("Senha atual errada!");
-        
+        console.log("As novas senhas não coincidem!");
       }
-      
-      //this.userService.editUser(editForm.value).subscribe(
-      //  (Response: User) => {
-      //    console.log(Response);
-      //    
-      //  },(error: HttpErrorResponse) =>{
-      //    alert(error);
-      //  }
-     // );
-      
+    } else {
+      console.log("Senha atual errada!");
+
     }
-  
-    constructor(
-      private authenticateService: AuthenticateService,
-      private router: Router,
-      private userService: UserService
-    ) {}
+
+    //this.userService.editUser(editForm.value).subscribe(
+    //  (Response: User) => {
+    //    console.log(Response);
+    //
+    //  },(error: HttpErrorResponse) =>{
+    //    alert(error);
+    //  }
+    // );
+
+  }
+
+  constructor(
+    private authenticateService: AuthenticateService,
+    private router: Router,
+    private userService: UserService
+  ) { }
 }

@@ -12,20 +12,7 @@ export class CancelNfseComponent {
 
   cancelForm!: FormGroup
 
-  // função interagir com o modal
-  public onOpenModal(): void{
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#cancelModal');
-
-    container?.appendChild(button);
-    button.click();
-    }
-
-    // função para validar campo descrição
+  // função para validar campo descrição
   get isDescriptionEmpty() {
     const control = this.cancelForm.get('description');
     return control?.touched && control.invalid;

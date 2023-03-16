@@ -33,9 +33,10 @@
               {{username}}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                data-bs-target="#editProfileModal">Editar perfil</a></li>
               <li><a class="dropdown-item" href="#">Configurações</a></li>
-              <li><a class="dropdown-item" href="#">Sair</a></li>
+              <li><a class="dropdown-item" href="/login">Sair</a></li>
             </ul>
           </li>
         </ul>
@@ -43,4 +44,5 @@
     </div>
 </nav>
 
-
+<!-- Modals -->
+<app-edit-profile></app-edit-profile>

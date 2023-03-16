@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Issue } from '../Interfaces/issue';
+import { Address } from '../Interfaces/address';
+import { Nfse } from '../Interfaces/nfse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ export class IssueService {
 
   constructor(private http: HttpClient) { }
 
-  public postIssue(issue: Issue): Observable<Issue>{
-    return this.http.post<Issue>(`${this.apiUrl}/nfse/add`, issue)
+  public postIssue(issue: Nfse): Observable<Nfse>{
+    return this.http.post<Nfse>(`${this.apiUrl}/nfse/add`, issue);
+  }
+
+  public getCep(cep: string): Observable<Address> {
+    return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`);
   }
 }
