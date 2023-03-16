@@ -9,8 +9,13 @@ import devs2blu.sysout.nfse.enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class UserDto {
+
+	private UUID id;
+
 	@NotBlank
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String name;

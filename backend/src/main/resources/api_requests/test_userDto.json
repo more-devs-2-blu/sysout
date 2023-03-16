@@ -1,5 +1,6 @@
 {
 	"name": "test",
+	"role": "USER",
 	"email": "test@test.test",
 	"password": "test",
 	"role": "USER",

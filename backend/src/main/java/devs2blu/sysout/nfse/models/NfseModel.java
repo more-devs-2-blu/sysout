@@ -27,103 +27,103 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "nfses")
 public class NfseModel implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	@Column(unique = true, updatable = false)
-	private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(unique = true, updatable = false)
+    private UUID id;
 
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "id_user")
-	private UserModel user;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "id_user")
+    private UserModel user;
 
-	// Provider information
-	private String providerEconomicRegistration;
+    // Provider information
+    private String providerEconomicRegistration;
 
-	private String providerCnpjOrCpf;
+    private String providerCnpjOrCpf;
 
-	// Invoice information
-	@Column(nullable = false)
-	private int series;
+    // Invoice information
+    @Column(nullable = false)
+    private int series;
 
-	private char type;
+    private String type;
 
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-	private LocalDateTime dateOfIssue;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime dateOfIssue;
 
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-	private LocalDateTime TaxableEventDate;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime TaxableEventDate;
 
-	// Borrower information
-	private BorrowerType borrowerType;
+    // Borrower information
+    private BorrowerType borrowerType;
 
-	private String borrower;
+    private String borrower;
 
-	private String borrowerCnpjOrCpf;
+    private String borrowerCnpjOrCpf;
 
-	private String borrowerEconomicRegistration;
+    private String borrowerEconomicRegistration;
 
-	private String borrowerCity;
+    private String borrowerCity;
 
-	private String borrowerCep;
+    private String borrowerCep;
 
-	private String borrowerCountry;
+    private String borrowerCountry;
 
-	private String borrowerStreet;
+    private String borrowerStreet;
 
-	private String borrowerDistrict;
+    private String borrowerDistrict;
 
-	// Invoice Items
-	private String placeOfProvision;
+    // Invoice Items
+    private String placeOfProvision;
 
-	private String serviceList;
+    private String serviceList;
 
-	private String placeOfIncidence;
+    private String placeOfIncidence;
 
-	private String taxSituation;
+    private String taxSituation;
 
-	private double timboRate;
+    private double timboRate;
 
-	private double serviceValue;
+    private double serviceValue;
 
-	private double discountUnconditional;
+    private double discountUnconditional;
 
-	private double dedutionAmount;
+    private double dedutionAmount;
 
-	private double calculationBase;
+    private double calculationBase;
 
-	private double ISSQN;
+    private double ISSQN;
 
-	private double ISSRF;
+    private double ISSRF;
 
-	private String description;
+    private String description;
 
-	// Federal taxes
-	private double incomeTax;
+    // Federal taxes
+    private double incomeTax;
 
-	private double pis;
+    private double pis;
 
-	private double cofins;
+    private double cofins;
 
-	// Values
-	private double amount;
+    // Values
+    private double amount;
 
-	private double unconditionalDiscount;
+    private double unconditionalDiscount;
 
-	private double deduction;
+    private double deduction;
 
-	private double calculationBasis;
+    private double calculationBasis;
 
-	private double totalIssqn;
+    private double totalIssqn;
 
-	private double totalIssrf;
+    private double totalIssrf;
 
-	private double totalFederalTaxes;
+    private double totalFederalTaxes;
 
-	private double conditionalDiscount;
+    private double conditionalDiscount;
 
-	private double netValue;
+    private double netValue;
 
-	// Invoice status
-	private InvoiceStatus invoiceStatus;
+    // Invoice status
+    private InvoiceStatus invoiceStatus;
 }

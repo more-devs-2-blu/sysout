@@ -1,16 +1,10 @@
-<!-- Botão cancelar -->
-<a class="nav-link" (click)="onOpenModal()">Cancelar NFS-e</a>
-
-<!-- Modal -->
 <div class="container" id="main-container">
-  <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content" style="background-color: #F1F2F8;">
         <div class="modal-header">
-          <h2 class="modal-title" id="modalTitle">Cancelar NFS-e</h2>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h2 class="modal-title">Cancelar NFS-e</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="container">
           <div class="row row-cols-3 ps-1 mt-3">
@@ -26,24 +20,19 @@
         </div>
         <hr>
         <div class="modal-body">
-          <form (ngSubmit) = "submit()" [formGroup]="cancelForm" #formDir="ngForm">
+          <form [formGroup]="cancelForm" #formDir="ngForm">
             <div class="form-group">
-              <label for="cancelText" class="form-label mb-1">Informe o motivo do cancelamento</label>
-              <textarea formControlName="description" class="form-control" rows="5" maxlength="250" placeholder="Motivo do cancelamento..." required></textarea>
-            </div>
-            <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
-              <p *ngIf="description.errors?.['required']"> Campo obrigatório.</p>
-              <p *ngIf="description.errors?.['maxlength']"> Limite de caracteres atingido.</p>
+              <label for="cancelText" class="form-label mb-1">Informe o motivo do cancelamento<span style="color: red;">*</span></label>
+              <textarea formControlName="description" class="form-control" [ngClass]="{'border-red': isDescriptionEmpty }" rows="5" maxlength="250" placeholder="Motivo do cancelamento..." required></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-blue" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-red">Cancelar NFS-e</button>
+          <button type="button" class="btn btn-blue" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-red" data-bs-dismiss="modal" [disabled]="formDir.invalid">Cancelar NFS-e</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 

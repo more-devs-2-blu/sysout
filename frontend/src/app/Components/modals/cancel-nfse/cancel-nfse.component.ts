@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -12,21 +12,10 @@ export class CancelNfseComponent {
 
   cancelForm!: FormGroup
 
-  // função interagir com o modal
-  public onOpenModal(): void{
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#cancelModal');
-
-    container?.appendChild(button);
-    button.click();
-    }
-
-  get description(){
-    return this.cancelForm.get('description')!;
+  // função para validar campo descrição
+  get isDescriptionEmpty() {
+    const control = this.cancelForm.get('description');
+    return control?.touched && control.invalid;
   }
 
   ngOnInit() {
@@ -34,13 +23,6 @@ export class CancelNfseComponent {
       description: new FormControl('', [Validators.required]),
     })
     if (!this.authenticateService.isUserLogged()) this.router.navigate(['login'])
-  }
-
-  submit(){
-    if(this.cancelForm.invalid){
-      return
-    }
-    console.log('Enviou formulário')
   }
 
   constructor(

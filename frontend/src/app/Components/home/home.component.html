@@ -6,7 +6,7 @@
       <h2>Bem vindo, {{user.name}}.</h2>
     </div>
     <div class="col-sm text-end py-4 border-0">
-      <button id="emit-btn" class="btn btn-rounded">Emitir NFS-e</button>
+      <button id="emit-btn" class="btn btn-rounded" routerLink="/issue">Emitir NFS-e</button>
     </div>
   </div>
 </div>
@@ -80,7 +80,7 @@
   <div class="row">
     <div class="col">
       <div class="card-header mb-3 pb-0 border-0">
-        <h4 class="fw-bold">NFS-e emitidas</h4>
+        <h4 class="fw-bold" id="issued">NFS-e emitidas</h4>
       </div>
       <div class="table-responsive">
         <table class="table py-2 p-5">
@@ -179,3 +179,5 @@
 </div>
 
 <app-footer></app-footer>
+
+<app-cancel-nfse></app-cancel-nfse>
