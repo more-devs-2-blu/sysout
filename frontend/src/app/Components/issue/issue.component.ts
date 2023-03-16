@@ -25,6 +25,7 @@ export class IssueComponent implements OnInit {
   discount: number = 0.00;
   showErrorMessage = false;
   user!: User;
+  username!: string;
   issue?: Nfse;
   address: Address = {
     'cep': '',
@@ -48,6 +49,7 @@ export class IssueComponent implements OnInit {
 
     this.userService.getUser().subscribe(user => {
       this.user = user;
+      this.username = user.name.split(' ')[0];
     });
 
     this.currentStep(this.step);
