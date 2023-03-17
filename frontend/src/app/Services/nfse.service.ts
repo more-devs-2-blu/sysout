@@ -9,6 +9,9 @@ import { Nfse } from '../Interfaces/nfse';
 })
 
 export class NfseService {
+  getNfse(id: string) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = environment.baseApiUrl;
 
   constructor(private http: HttpClient) { }
@@ -16,4 +19,10 @@ export class NfseService {
   public getAllNfses(userId: string): Observable<Nfse[]> {
     return this.http.get<Nfse[]>(`${this.apiUrl}/nfse/all/${userId}`);
   }
+
+  public getNotaFiscalById(notaFiscalId: number): Observable<Nfse> {
+    return this.http.get<Nfse>(`${this.apiUrl}/nfse/${notaFiscalId}`);
+  }
+
+
 }

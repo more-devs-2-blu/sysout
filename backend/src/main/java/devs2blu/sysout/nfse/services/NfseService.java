@@ -37,6 +37,8 @@ public class NfseService {
 	private String apiUrl;
 
 	@Autowired
+	private ApiConsumer apiConsumer;
+	@Autowired
 	private NfseRepository nfseRepository;
 
 	@Autowired
@@ -66,20 +68,24 @@ public class NfseService {
 		nfseRepository.deleteById(id);
 	}
 
-	public void cancelNfse(int series) throws Exception {
-		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpPost httpPost = new HttpPost(apiUrl);
-		httpPost.setHeader("Content-Type", "application/json");
-		JSONObject json = new JSONObject();
-		json.put("number", series);
-		httpPost.setEntity(new StringEntity(json.toString(), StandardCharsets.UTF_8));
+	public void cancelNfse(UUID id) {
+		String username = "25.825.307/0001-52";
+		String password = "Teste@2023";
+		String body = "<?xml version='1.0' encoding='iso-8859-1'?>" +
+				"<nfse>" +
+				"<nfse_teste>1</nfse_teste>" +
+				"<nf>" +
+				"<numero></numero>" +
+				"<situacao></situacao>" +
+				"<observacao></observacao>" +
+				"</nf>" +
+				"<prestador>" +
+				"<cpfcnpj></cpfcnpj>" +
+				"<cidade></cidade>" +
+				"</prestador>" +
+				"</nfse>";
+		apiConsumer.request(username,password,body);
 
-		try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
-			int statusCode = response.getStatusLine().getStatusCode();
-			if (statusCode != HttpStatus.SC_OK) {
-				throw new Exception("Error ao cancelar nota fiscal. Status code: " + statusCode);
-			}
-		}
 	}
 
 	public String nfseToXml(NfseDto nfseDto) throws JAXBException {

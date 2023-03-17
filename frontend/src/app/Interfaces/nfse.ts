@@ -1,5 +1,5 @@
 export interface Nfse {
-  id: string,
+  id: number,
   userId: string,
   statusNfse: string | null,
   valorTotal: number,
