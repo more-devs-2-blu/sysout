@@ -36,6 +36,9 @@ export class HomeComponent implements OnInit {
         this.nfses.forEach((nfse) => {
           this.customersCount[nfse.borrowerCnpjOrCpf] = true;
           this.totalBilling += nfse.amount;
+          if(nfse.taxSituation === "CANCELADA"){
+            this.totalCanceledNfse += 1;
+          }
         })
         this.customersCount = Object.keys(this.customersCount).length;
       })

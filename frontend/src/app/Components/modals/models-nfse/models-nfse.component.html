@@ -45,13 +45,13 @@
                         <td>{{nfse.dateOfIssue}}</td>
                         <td>{{nfse.dateOfIssue}}</td>
                         <td>{{nfse.dateOfIssue}}</td>
-                        <td>Programação</td>
-                        <td>894030</td>
+                        <td>{{nfse.serviceList}}</td>
+                        <td>{{nfse.timboRate}}</td>
                         <td>{{nfse.borrower}}</td>
                         <td>{{nfse.borrowerCnpjOrCpf}}</td>
                         <td>R${{nfse.amount}}</td>
                         <td>R${{nfse.amount - nfse.totalIssqn}}</td>
-                        <td class="status emited">Emitida</td>
+                        <td class="status emited">{{nfse.taxSituation}}</td>
                         <td><span class="copy-nfse-model-btn" (click)="copyNfse(nfse.id)">Copiar</span>
                       </tr>
                     </tbody>

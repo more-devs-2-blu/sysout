@@ -104,15 +104,15 @@
             <tr data-id="nfse.id">
               <td scope="row">1</td>
               <td>{{nfse.dateOfIssue}}</td>
-              <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
+              <td>{{nfse.dateOfIssue}}</td>
+              <td>{{nfse.dateOfIssue}}</td>
+              <td>{{nfse.serviceList}}</td>
+              <td>{{nfse.timboRate}}</td>
               <td>{{nfse.borrower}}</td>
               <td>{{nfse.borrowerCnpjOrCpf}}</td>
               <td>R${{nfse.amount}}</td>
               <td>R${{nfse.amount - nfse.totalIssqn}}</td>
-              <td class="status emited">Emitida</td>
+              <td class="status emited">{{nfse.taxSituation}}</td>
               <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
           </tbody>
