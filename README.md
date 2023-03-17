@@ -32,12 +32,24 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 <img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/>
 <img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/>
 <img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"/>
-</div
-
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/>
+<img width="40rem" src="https://camo.githubusercontent.com/9f1ca3b98fb55939fd8e45b6299cc9dfee7163ec9f663fd6f43fc5cfda3c118f/68747470733a2f2f7777772e7376677265706f2e636f6d2f646f776e6c6f61642f3335343230322f706f73746d616e2d69636f6e2e737667"/>
+</div>
 <hr>
 <h3>📋 Requisitos funcionais</h3>
+<ul>
+<li>Logar no sistema;</li>
+<li>Emitir uma NFS-es;</li>
+<li>Cancelar uma NFS-es;</li>
+<li>Pesquisar e filtrar uma NFS-es;</li>
+<li>Integrar via webservice com o sistema de NFS e da prefeitura.</li>
+</ul>
 <hr>
 <h3>📋 Requisitos não-funcionais</h3>
+<ul>
+<li>Fácil usabilidade;</li>
+<li>Usuário possuir um CNPJ ativo;</li>
+</ul>
 <hr>
 <h3>📝 Documentação</h3>
 <ul>
