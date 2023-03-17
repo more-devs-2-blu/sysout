@@ -11,7 +11,7 @@ Milhares de NFS-es são emitidas todos os dias no Brasil, entretanto, não há u
 </ul>
 <hr>
 <h3>💡 A Solução</h3>
-Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar funções importantes do sistema através de poucos cliques. O sistema inclui:
+Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar funções importantes do sistema através de poucos cliques. O sistema inclui:<br><br>
 <ul>
 <li>Cadastro de usuários</li>
 <li>Dashboard com estatísticas das emissões;</li>
@@ -36,4 +36,15 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 </ul>
 <hr>
 <h3>👨‍💻👩‍💻 Equipe</h3>
+<ul>
+  <li><a href="https://www.linkedin.com/in/arthur-caruso/">Arthur Francisco Caruso<a/></li>
+  <li><a href="https://www.linkedin.com/in/caio-neves-dos-santos-a1a1a8185/">Caio Neves dos Santos<a/></li>
+  <li><a href="https://www.linkedin.com/in/eduardofloriani/">Eduardo Floriani<a/></li>
+  <li><a href="https://www.linkedin.com/in/helena-correa-ribeiro-b48132144/">Helena Correa Ribeiro<a/></li>
+  <li><a href="https://www.linkedin.com/in/klaus-petrikovski/">Klaus Eduard Padilha Petrikovski<a/></li>
+  <li><a href="https://www.linkedin.com/in/laila-gebhard/">Laila Gebhard da Rosa<a/></li>
+  <li><a href="https://www.linkedin.com/in/osmando-marin-336b87237/">Osmando Marin<a/></li>
+</ul>
+  
+
 
