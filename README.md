@@ -2,7 +2,7 @@
 <em>Desafio A: Como facilitar a digitação e gestão de NFS-es</em>
 
 <h3>🔸 O Desafio</h3>
-Milhares de NFS-es são emitidas todos os dias no Brasil, entretanto, não há um padrão de emissão e cada município conta com suas próprias regras. Essa falta de padrão por vezes gera sistemas nada amigáveis ao usuário, e, somado ao fato dos inúmeros campos complicados a serem preenchedidos, o resultado são sistemas complicados de serem utilizados e passíveis de muitos erros durante o processo. 
+Milhares de NFS-es são emitidas todos os dias no Brasil, entretanto, não há um padrão de emissão e cada município conta com suas próprias regras. Essa falta de padrão por vezes gera sistemas nada amigáveis ao usuário, e, somado ao fato dos inúmeros campos complicados a serem preenchedidos, o resultado são aplicações difíceis de serem utilizadas e passíveis de muitos erros durante o processo. 
 <hr>
 <h3>🔸 Requisitos do Projeto</h3>
 <ul>
@@ -11,7 +11,17 @@ Milhares de NFS-es são emitidas todos os dias no Brasil, entretanto, não há u
 </ul>
 <hr>
 <h3>🔸 A Solução</h3>
-Avaliando o problema, chegou-se em uma solução que permite ao usuário acessar funções importantes do sistema através de poucos cliques. 
+Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar funções importantes do sistema através de poucos cliques. O sistema inclui:
+<ul>
+<li>Cadastro de usuários</li>
+<li>Dashboard com estatísticas das emissões;</li>
+<li>Filtro de pesquisa para encontrar NFS-es emitidas há até 5 anos atrás;</li>
+<li>Descrição dos campos do formulário que podem ser visualizados ao passar o mouse;</li>
+<li>Menu de ações rápidas disponível na tabela de resultados de notas emitidas. Dentre outras funções, inclui: baixar FDP, baixar XML, imprimir, cancelar nota, etc.;</li>
+<li>Cancelamento de NFS-es;
+<li>Criação de modelos de notas que podem ser salvas e reutilizadas.</li>
+
+</ul>
 <hr>
 <h3>🔸 Tecnologias utilizadas</h3>
 <hr>
