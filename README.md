@@ -37,7 +37,7 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 <img width="40rem" src="https://camo.githubusercontent.com/9f1ca3b98fb55939fd8e45b6299cc9dfee7163ec9f663fd6f43fc5cfda3c118f/68747470733a2f2f7777772e7376677265706f2e636f6d2f646f776e6c6f61642f3335343230322f706f73746d616e2d69636f6e2e737667"/>
 </div>
 <hr>
-<h3>📋 Requisitos funcionais</h3>
+<h3>📋 Requisitos funcionais e não-funcionais</h3>
 <ul>
 <li>Logar no sistema;</li>
 <li>Emitir uma NFS-es;</li>
