@@ -21,7 +21,6 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 <li>Menu de ações rápidas disponível na tabela de resultados de notas emitidas. Dentre outras funções, inclui: baixar PDF, baixar XML, imprimir, cancelar nota, etc.;</li>
 <li>Cancelamento de NFS-es;
 <li>Criação de modelos de notas que podem ser salvas e reutilizadas.</li>
-
 </ul>
 <hr>
 <h3>💻 Tecnologias utilizadas</h3>
@@ -38,19 +37,17 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 </div>
 <hr>
 <h3>📋 Requisitos funcionais e não-funcionais</h3>
-<ul>
-<li>Logar no sistema;</li>
-<li>Emitir uma NFS-es;</li>
-<li>Cancelar uma NFS-es;</li>
-<li>Pesquisar e filtrar uma NFS-es;</li>
-<li>Integrar via webservice com o sistema de NFS e da prefeitura.</li>
-</ul>
-<hr>
-<h3>📋 Requisitos não-funcionais</h3>
-<ul>
-<li>Fácil usabilidade;</li>
-<li>Usuário possuir um CNPJ ativo;</li>
-</ul>
+
+| Requisito  | Função |
+| ------------- | ------------- |
+| Funcional | Logar no sistema |
+| Funcional | Emitir uma NFS-es |
+| Funcional | Cancelar uma NFS-es |
+| Funcional | Pesquisar e filtrar uma NFS-es |
+| Funcional | Integrar via webservice com o sistema de NFS e da prefeitura |
+| Não-funcional | Fácil usabilidade |
+| Não-funcional | Usuário possuir um CNPJ ativo |
+
 <hr>
 <h3>📝 Documentação</h3>
 <ul>
