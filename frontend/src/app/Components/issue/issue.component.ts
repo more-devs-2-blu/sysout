@@ -18,7 +18,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class IssueComponent implements OnInit {
 
   step: number = 1;
-  todayDate = new Date().getDate();
+  todayDate = new Date().toLocaleDateString();
   servType: any;
   localCod: any;
   totalValue: number = 0.00;

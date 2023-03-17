@@ -34,7 +34,7 @@ public class NfseModel implements Serializable {
 	@Column(nullable = false)
 	private UUID userId;
 
-	@Column(nullable = false)
+
 	private StatusNfseEnum statusNfse;
 
 	@Column(nullable = false)
@@ -72,4 +72,24 @@ public class NfseModel implements Serializable {
 
 	@Column(nullable = false)
 	private String tributaMunicipioPrestador;
+
+	@Column(nullable = false)
+	@JsonFormat(pattern = "yyy-MM-dd" )
+	private LocalDateTime dataDeEmissao;
+
+	@Column(nullable = false)
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private String dataDoFatoGerador;
+
+	@Column(nullable = false)
+	private String nomeRazaoSocial;
+
+	@Column(nullable = false)
+	private String cpfCnpjTomador;
+
+	@Column(nullable = false)
+	private double valorServico;
+
+	@Column(nullable = false)
+	private double valorIssqn;
 }

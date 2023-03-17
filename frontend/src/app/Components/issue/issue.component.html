@@ -26,8 +26,8 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3" *ngIf="user">
-                  <label for="providerCnpjOrCpf" class="form-label mb-0">CNPJ</label>
-                  <input type="text" class="form-control disable" ngModel name="providerCnpjOrCpf"
+                  <label for="cpfCnpjPrestador" class="form-label mb-0">CNPJ</label>
+                  <input type="text" class="form-control disable" ngModel name="cpfCnpjPrestador"
                     [(ngModel)]="user.userDocIdentification" />
                 </div>
               </div>
@@ -40,9 +40,9 @@
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="providerEconomicRegistration" class="form-label mb-0">Cadastro Econômico</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel
-                    name="providerEconomicRegistration"/>
+                  <label for="cidadePrestador" class="form-label mb-0 required">Cidade do Prestador</label>
+                  <input type="text" class="form-control" ngModel
+                    name="cidadePrestador"/>
                 </div>
               </div>
             </div>
@@ -50,30 +50,29 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="series" class="form-label mb-0">Série</label>
-                  <input type="text" class="form-control" ngModel name="series"/>
+                  <label for="serie" class="form-label mb-0">Série</label>
+                  <input type="text" class="form-control" ngModel name="serie"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="type" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="tipo" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Uma letra, carater organizacional apenas.">Tipo</label>
                   <input type="text" maxlength="1" (ngModelChange)="$event.toUpperCase()" class="form-control" ngModel
-                    name="type"/>
+                    name="tipo"/>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="dateOfIssue" class="form-label mb-0">Data de Emissão</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="dateOfIssue"
+                  <label for="dataDeEmissao" class="form-label mb-0">Data de Emissão</label>
+                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="dataDeEmissao"
                     [ngModel]="todayDate" />
                 </div>
               </div>
               <div class="col-sm">
-                <div class="mb-3">
-                  <label for="taxableEventDate" class="form-label mb-0">Data do Fato Gerado</label>
-                  <input [readOnly]="true" type="text" class="form-control date disable" ngModel name="taxableEventDate"
-                    [ngModel]="todayDate" />
+                <div class="mb-3">              
+                    <label for="dataDoFatoGerador" class="form-label mb-0 required">Data do Fato Gerado</label>
+                    <input type="date" class="form-control" id="lastDate" ngModel name="dataDoFatoGerador">
                 </div>
               </div>
             </div>
@@ -85,24 +84,24 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="serviceList" class="form-label mb-0 required">Enquadramento do Serviço</label>
-                  <select class="form-select mb-3" ngModel name="serviceList"
+                  <label for="codigoItemListaServico" class="form-label mb-0 required">Enquadramento do Serviço</label>
+                  <select class="form-select mb-3" ngModel name="codigoItemListaServico"
                     aria-label="Default select example" [(ngModel)]="servType">
                     <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="702">702 - Execução, por administração, empreitada ou subempreitada, de
+                    <option value=702>702 - Execução, por administração, empreitada ou subempreitada, de
                       obras de construção civil, hidráulica ou elétrica e de outras obras
                       semelhantes.</option>
-                    <option value="1406">1406 - Instalação e montagem de aparelhos, máquinas e equipamentos,
+                    <option value=1406>1406 - Instalação e montagem de aparelhos, máquinas e equipamentos,
                       inclusive montagem industrial, prestados ao usuário final,
                       exclusivamente com material por ele fornecido.</option>
-                    <option value="1708">1708 - Franquia (franchising).</option>
+                    <option value=1708>1708 - Franquia (franchising).</option>
                   </select>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="localProvisionName" class="form-label mb-0 required">Local de Prestação</label>
-                  <select class="form-select mb-3" ngModel name="localProvisionName"
+                  <label for="nomeLocalDeProvisao" class="form-label mb-0 required">Local de Prestação</label>
+                  <select class="form-select mb-3" ngModel name="nomeLocalDeProvisao"
                     aria-label="Default select example" [(ngModel)]="localCod">
                     <option value="" disabled selected>Selecione uma opção</option>
                     <option value="Blumenau">Blumenau</option>
@@ -112,23 +111,23 @@
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="placeOfProvision" class="form-label mb-0 required">Codigo do Local</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="placeOfProvision"
+                  <label for="codigoLocalPrestacaoServico" class="form-label mb-0 required">Codigo do Local</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="codigoLocalPrestacaoServico"
                     placeholder="Escolha um local de prestação" [ngModel]="localCode()" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="placeOfIncidence" class="form-label mb-0">Local de Incidência</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="placeOfIncidence"
+                  <label for="localDeIncidencia" class="form-label mb-0">Local de Incidência</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="localDeIncidencia"
                    [ngModel]="'Timbó'" />
                 </div>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="description" class="form-label mb-0 required">Discriminação:</label>
-              <textarea class="form-control" ngModel name="description" rows="5"
+              <label for="descritivo" class="form-label mb-0 required">Discriminação:</label>
+              <textarea class="form-control" ngModel name="descritivo" rows="5"
                 placeholder="Descreva detalhes sobre o serviço prestado..."></textarea>
             </div>
 
@@ -147,8 +146,8 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerType" class="form-label mb-0 required">Tipo do Tomador</label>
-                  <select class="form-select mb-3" ngModel name="borrowerType"
+                  <label for="tipoTomador" class="form-label mb-0 required">Tipo do Tomador</label>
+                  <select class="form-select mb-3" ngModel name="tipoTomador"
                     aria-label="Default select example">
                     <option value="" disabled selected>Selecione uma opção</option>
                     <option value=1>Pessoa Física</option>
@@ -159,22 +158,22 @@
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrower" class="form-label mb-0 required">Tomador</label>
-                  <input type="text" class="form-control" ngModel name="borrower"
+                  <label for="nomeRazaoSocial" class="form-label mb-0 required">Tomador</label>
+                  <input type="text" class="form-control" ngModel name="nomeRazaoSocial"
                     placeholder="Digite o nome ou razão social" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerCnpjOrCpf" class="form-label mb-0 required">CPF/CNPJ</label>
-                  <input type="text" class="form-control" ngModel name="borrowerCnpjOrCpf"
+                  <label for="cpfCnpjTomador" class="form-label mb-0 required">CPF/CNPJ</label>
+                  <input type="text" class="form-control" ngModel name="cpfCnpjTomador"
                     placeholder="Digite o CPF/CNPJ" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerEconomicRegistration" class="form-label mb-0">Cadastro Econômico</label>
-                  <input type="text" class="form-control" ngModel name="borrowerEconomicRegistration"/>
+                  <label for="registroEconomicoTomador" class="form-label mb-0">Cadastro Econômico</label>
+                  <input type="text" class="form-control" ngModel name="registroEconomicoTomador"/>
                 </div>
               </div>
             </div>
@@ -184,22 +183,22 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerCep" class="form-label mb-0 required">CEP</label>
-                  <input (ngModelChange)="searchCEP()" type="text" class="form-control" ngModel name="borrowerCep" id="issue-cep"
+                  <label for="cepTomador" class="form-label mb-0 required">CEP</label>
+                  <input (ngModelChange)="searchCEP()" type="text" class="form-control" ngModel name="cepTomador" id="issue-cep"
                     placeholder="Digite o cep" maxlength="9" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerCity" class="form-label mb-0 required">Cidade</label>
-                  <input type="text" class="form-control" [(ngModel)]="address.localidade" ngModel name="borrowerCity"
+                  <label for="cidade" class="form-label mb-0 required">Cidade</label>
+                  <input type="text" class="form-control" [(ngModel)]="address.localidade" ngModel name="cidade"
                     placeholder="Digite a cidade" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerCountry" class="form-label mb-0">País</label>
-                  <input type="text" class="form-control" [(ngModel)]="pais" ngModel name="borrowerCountry"
+                  <label for="pais" class="form-label mb-0">País</label>
+                  <input type="text" class="form-control" [(ngModel)]="pais" ngModel name="pais"
                     placeholder="Digite o país" />
                 </div>
               </div>
@@ -208,15 +207,15 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerDistrict" class="form-label mb-0 required">Bairro</label>
-                  <input type="text" class="form-control" [(ngModel)]="address.bairro" ngModel name="borrowerDistrict"
+                  <label for="bairro" class="form-label mb-0 required">Bairro</label>
+                  <input type="text" class="form-control" [(ngModel)]="address.bairro" ngModel name="bairro"
                     placeholder="Digite o bairro" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="borrowerStreet" class="form-label mb-0 required">Logradouro</label>
-                  <input type="text" class="form-control" [(ngModel)]="address.logradouro" ngModel name="borrowerStreet"
+                  <label for="logradouro" class="form-label mb-0 required">Logradouro</label>
+                  <input type="text" class="form-control" [(ngModel)]="address.logradouro" ngModel name="logradouro"
                     placeholder="Digite o logradouro" />
                 </div>
               </div>
@@ -237,35 +236,40 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="taxSituation" class="form-label mb-0">Situação Tributaria</label>
-                  <select class="form-select mb-3" ngModel name="taxSituation"
+                  <label for="situacaoTributaria" class="form-label mb-0">Situação Tributaria</label>
+                  <select class="form-select mb-3" ngModel name="situacaoTributaria"
                     aria-label="Default select example">
                     <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="00">TI - Tributada Integralmente</option>
-                    <option value="20">TRBC - Tributada com Redução da Base de Cálculo</option>
-                    <option value="70">TRBCRF - Tributada com Redução da Base de Cálculo e Retenção na Fonte</option>
-                    <option value="41">NTICc - Não Tributada - ISS Construção Civil Recolhido Antecipadamente</option>
+                    <option value="0">TI - Tributada Integralmente</option>
+                    <option value="3">TRBC - Tributada com Redução da Base de Cálculo</option>
+                    <option value="4">TRBCRF - Tributada com Redução da Base de Cálculo e Retenção na Fonte</option>
+                    <option value="10">NTICc - Não Tributada - ISS Construção Civil Recolhido Antecipadamente</option>
                   </select>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="timboRate" class="form-label mb-0">Aliquota</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="timboRate"
+                  <label for="aliquotaItemListaServico" class="form-label mb-0">Aliquota</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="aliquotaItemListaServico"
                    [ngModel]="aliqValue()" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="amount" class="form-label mb-0 required ">Valor do Serviço</label>
-                  <input type="text" class="form-control" ngModel name="amount"
+                  <label for="valorServico" class="form-label mb-0 required ">Valor do Serviço</label>
+                  <input type="text" class="form-control" ngModel name="valorServico"
                     placeholder="Digite o valor do serviço" [(ngModel)]="totalValue" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="discountUnconditional" class="form-label mb-0">Desc. Incondicional</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="discountUnconditional"/>
+                  <label for="tributaMunicipioPrestador" class="form-label mb-0">Situação Tributaria</label>
+                  <select class="form-select mb-3" ngModel name="tributaMunicipioPrestador"
+                    aria-label="Default select example">
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="N">Tributada no ato da prestação de serviço.</option>
+                    <option value="S">Tributada pela prefeitura posterior ao ato.</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -273,29 +277,29 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="dedutionAmount" class="form-label mb-0">Valor da Dedução</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="dedutionAmount"
+                  <label for="valorDeducao" class="form-label mb-0">Valor da Dedução</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorDeducao"
                     [ngModel]="0.00" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="calcbase" class="form-label mb-0">Base de Cálculo</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="calcbase"
+                  <label for="baseDeCalculo" class="form-label mb-0">Base de Cálculo</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="baseDeCalculo"
                     [ngModel]="totalValue" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="ISSQN" class="form-label mb-0">ISSQN</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="ISSQN"
+                  <label for="issqn" class="form-label mb-0">ISSQN</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="issqn"
                     [ngModel]="issqnValue()" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="ISSRF" class="form-label mb-0">ISSRF</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="ISSRF"
+                  <label for="issrf" class="form-label mb-0">ISSRF</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="issrf"
                     [ngModel]="0.00" />
                 </div>
               </div>
@@ -309,8 +313,8 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="incomeTax" class="form-label mb-0">IR</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="incomeTax"
+                  <label for="ir" class="form-label mb-0">IR</label>
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="ir"
                      [ngModel]="0.00" />
                 </div>
               </div>
@@ -337,25 +341,25 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="value" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="valorTributavel" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total dos Itens Informados">Valor Total</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="value"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorTributavel"
                    [ngModel]="totalValue" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="unconditionalDiscount" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="descontoIncondicional" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valores Totais dos Descontos Incondicionais Informados nos Itens">Desc. Incondicional</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="unconditionalDiscount"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="descontoIncondicional"
                     [ngModel]="0.00" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="deduction" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="deducao" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total das Deduções informadas nos itens">Dedução</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="deduction"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="deducao"
                     [ngModel]="0.00" />
                 </div>
               </div>
@@ -364,25 +368,25 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="calculationBase" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="baseDeCalculo" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total - Dedução">Base de Calculo</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="calculationBase"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="baseDeCalculo"
                     [ngModel]="totalValue" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="totalIssqn" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="valorIssqn" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total de ISSQN dos Itens">Total ISSQN</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="totalIssqn"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorIssqn"
                     [ngModel]="issqnValue()" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="totalIssrf" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="valorIssrf" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total de ISSRF dos itens">Total ISSRF</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="totalIssrf"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorIssrf"
                     [ngModel]="0.00" />
                 </div>
               </div>
@@ -391,25 +395,25 @@
             <div class="row">
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="totalFederalTaxes" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="valorTotalFederal" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Soma de todos os Tributos Federais">Tributos Federais</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="totalFederalTaxes"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorTotalFederal"
                     [ngModel]="0.00" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="conditionalDescount" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="descontoCondicional" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor de desconto informado pelo contribuínte">Desc. Condicional</label>
-                  <input type="text" class="form-control" ngModel name="conditionalDescount"
+                  <input type="text" class="form-control" ngModel name="descontoCondicional"
                     [(ngModel)]="discount" />
                 </div>
               </div>
               <div class="col-sm">
                 <div class="mb-3">
-                  <label for="netValue" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
+                  <label for="valorTotal" class="form-label mb-0" data-toggle="tooltip" data-placement="right"
                     title="Valor Total - Valor ISSRF - Tributos Federais - Descontos">Valor Líquido</label>
-                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="netValue"
+                  <input [readOnly]="true" type="text" class="form-control disable" ngModel name="valorTotal"
                     [ngModel]="liqValue()" />
                 </div>
               </div>

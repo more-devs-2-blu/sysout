@@ -91,7 +91,6 @@
               <th scope="col">Competência</th>
               <th scope="col">Data Fator Gerador</th>
               <th scope="col">Serviço</th>
-              <th scope="col">Código</th>
               <th scope="col">Cliente</th>
               <th scope="col">CPF/CNPJ</th>
               <th scope="col">Valor total</th>
@@ -103,15 +102,14 @@
           <tbody *ngFor="let nfse of nfses">
             <tr data-id="nfse.id">
               <td scope="row">1</td>
-              <td>{{nfse.dateOfIssue}}</td>
+              <td>{{nfse.dataDeEmissao}}</td>
               <td>14/03/2023</td>
-              <td>14/03/2023</td>
-              <td>Programação</td>
-              <td>894030</td>
-              <td>{{nfse.borrower}}</td>
-              <td>{{nfse.borrowerCnpjOrCpf}}</td>
-              <td>R${{nfse.amount}}</td>
-              <td>R${{nfse.amount - nfse.totalIssqn}}</td>
+              <td>{{nfse.dataDoFatoGerador}}</td>
+              <td>{{nfse.codigoItemListaServico}}</td>
+              <td>{{nfse.nomeRazaoSocial}}</td>
+              <td>{{nfse.cpfCnpjTomador}}</td>
+              <td>R${{nfse.valorServico}}</td>
+              <td>R${{nfse.valorServico - nfse.valorIssqn}}</td>
               <td class="status emited">Emitida</td>
               <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>

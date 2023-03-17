@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
       this.nfseService.getAllNfses(user.id).subscribe((Response) => {
         this.nfses = Response;
         this.nfses.forEach((nfse) => {
-          this.customersCount[nfse.borrowerCnpjOrCpf] = true;
-          this.totalBilling += nfse.amount;
+          this.customersCount[nfse.cpfCnpjTomador] = true;
+          this.totalBilling += nfse.valorServico;
         })
         this.customersCount = Object.keys(this.customersCount).length;
       })

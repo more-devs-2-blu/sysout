@@ -1,5 +1,6 @@
 package devs2blu.sysout.nfse.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -58,6 +59,7 @@ public class NfseController {
 
 		NfseModel nfseModel = new NfseModel();
 		BeanUtils.copyProperties(nfseDto, nfseModel);
+		nfseModel.setDataDeEmissao(LocalDateTime.now());
 		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
 	}
 

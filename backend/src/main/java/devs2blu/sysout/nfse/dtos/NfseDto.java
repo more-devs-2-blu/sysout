@@ -53,4 +53,18 @@ public class NfseDto {
 
 	@NotBlank
 	private String tributaMunicipioPrestador;
+
+	@NotBlank
+	private String nomeRazaoSocial;
+
+	@NotBlank
+	private String dataDoFatoGerador;
+
+	@NotBlank
+	private String cpfCnpjTomador;
+
+	@NotNull
+	private double valorServico;
+	@NotNull
+	private double valorIssqn;
 }
