@@ -63,14 +63,18 @@ public class NfseController {
 		return new ResponseEntity<>(nfseService.saveNfse(nfseModel), HttpStatus.OK);
 	}
 
-	@PostMapping("/cancel")
-	public ResponseEntity<?> cancelarNfse(@RequestParam int series) {
-		try {
-			nfseService.cancelNfse(series);
-			return ResponseEntity.ok("NFS-e cancelada com sucesso.");
-		} catch (Exception e) {
-			return ResponseEntity.badRequest().body("Não foi possível cancelar a NFS-e. Erro: " + e.getMessage());
+
+	@GetMapping("/cancel/{id}")
+	public ResponseEntity<String> cancelNfse(@PathVariable("id")UUID id) {
+		Optional<NfseModel> nfseModelOptional = nfseService.findNfseById(id);
+
+		if (!nfseModelOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conflict: NFSe doesn't exist!");
 		}
+
+		nfseService.cancelNfse(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Request Cancel Sent");
+
 	}
 
 	@PutMapping("/{id}")
