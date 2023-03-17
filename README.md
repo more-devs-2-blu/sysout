@@ -24,6 +24,12 @@ Avaliando o problema, chegou-se a uma solução que permite ao usuário acessar 
 </ul>
 <hr>
 <h3>💻 Tecnologias utilizadas</h3>
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /> 
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+<img width="40rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/>
+
 <hr>
 <h3>📋 Requisitos funcionais</h3>
 <hr>
