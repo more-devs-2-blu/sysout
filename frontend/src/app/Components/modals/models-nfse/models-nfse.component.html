@@ -39,19 +39,18 @@
                         <th scope="col">Ação</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let nfse of nfses">
+                    <tbody *ngFor="let nfse of nfses, let i = index">
                       <tr data-id="nfse.id">
-                        <td scope="row">1</td>
-                        <td>{{nfse.dateOfIssue}}</td>
-                        <td>{{nfse.dateOfIssue}}</td>
-                        <td>{{nfse.dateOfIssue}}</td>
-                        <td>{{nfse.serviceList}}</td>
-                        <td>{{nfse.timboRate}}</td>
-                        <td>{{nfse.borrower}}</td>
-                        <td>{{nfse.borrowerCnpjOrCpf}}</td>
-                        <td>R${{nfse.amount}}</td>
-                        <td>R${{nfse.amount - nfse.totalIssqn}}</td>
-                        <td class="status emited">{{nfse.taxSituation}}</td>
+                        <td scope="row">{{ i + 1 }}</td>
+                        <td>{{nfse.dataDeEmissao}}</td>
+                        <td>{{nfse.dataDeEmissao}}</td>
+                        <td>{{nfse.dataDeEmissao}}</td>
+                        <td>{{nfse.codigoItemListaServico}}</td>
+                        <td>{{nfse.nomeRazaoSocial}}</td>
+                        <td>{{nfse.cpfCnpjTomador}}</td>
+                        <td>R${{nfse.valorServico}}</td>
+                        <td>R${{nfse.valorServico - nfse.valorIssqn}}</td>
+                        <td class="status emited">Emitido</td>
                         <td><span class="copy-nfse-model-btn" (click)="copyNfse(nfse.id)">Copiar</span>
                       </tr>
                     </tbody>

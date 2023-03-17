@@ -22,8 +22,6 @@ export class ModelsNfseComponent implements OnInit {
 
 
   nfses: Nfse[] = [];
-  customersCount: any = {};
-  totalBilling: number = 0;
   savedForm!: FormGroup
 
   constructor(
@@ -38,11 +36,6 @@ export class ModelsNfseComponent implements OnInit {
     this.userService.getUser().subscribe((user) => {
       this.nfseService.getAllNfses(user.id).subscribe((Response) => {
         this.nfses = Response;
-        this.nfses.forEach((nfse) => {
-          this.customersCount[nfse.borrowerCnpjOrCpf] = true;
-          this.totalBilling += nfse.amount;
-        })
-        this.customersCount = Object.keys(this.customersCount).length;
       })
     });
   }

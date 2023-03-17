@@ -99,9 +99,9 @@
               <th scope="col">Ação</th>
             </tr>
           </thead>
-          <tbody *ngFor="let nfse of nfses">
+          <tbody *ngFor="let nfse of nfses, let i = index">
             <tr data-id="nfse.id">
-              <td scope="row">1</td>
+              <td scope="row">{{ i + 1 }}</td>
               <td>{{nfse.dataDeEmissao}}</td>
               <td>14/03/2023</td>
               <td>{{nfse.dataDoFatoGerador}}</td>
@@ -110,7 +110,7 @@
               <td>{{nfse.cpfCnpjTomador}}</td>
               <td>R${{nfse.valorServico}}</td>
               <td>R${{nfse.valorServico - nfse.valorIssqn}}</td>
-              <td class="status emited">{{nfse.statusNfse}}</td>
+              <td class="status emited">Emitido</td>
               <td><app-actions-dropdown></app-actions-dropdown></td>
             </tr>
           </tbody>

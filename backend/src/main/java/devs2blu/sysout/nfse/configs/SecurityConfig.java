@@ -27,7 +27,7 @@ public class SecurityConfig {
 				.csrf()
 				.disable()
 				.authorizeHttpRequests()
-				.requestMatchers("/dashboard", "/user")
+				.requestMatchers("/nfse/**", "/user")
 				.authenticated()
 				.and()
 				.authorizeHttpRequests()
